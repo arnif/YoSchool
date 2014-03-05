@@ -12,6 +12,5 @@ angular.module('yoSchoolApp')
 		}, function(errorMessage) {
 			console.log('Error fetching evauation: ' + errorMessage);
 		});
-	} 
-
+	}
 });
