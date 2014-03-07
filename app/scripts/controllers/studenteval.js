@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-.controller('EvaluationCtrl', function ($scope, ApiFactory, $routeParams) {
-
+.controller('StudentevalCtrl', function ($scope, ApiFactory, $routeParams) {
 	var evaluationID = $routeParams.evaluationID;
 
 	if (evaluationID !== undefined) {
