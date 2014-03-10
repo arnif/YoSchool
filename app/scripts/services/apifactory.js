@@ -69,7 +69,7 @@ angular.module('yoSchoolApp')
 
         console.log(evaluation);
 
-        return deferred.promisel;
+        return deferred.promise;
       }
     };
 

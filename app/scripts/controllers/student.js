@@ -1,5 +1,6 @@
 'use strict';
 
+//show list of eval 
 angular.module('yoSchoolApp')
   .controller('StudentCtrl', function ($scope, ApiFactory) {
     ApiFactory.getAllEvaluations().then(function(data) {

@@ -7,4 +7,6 @@ angular.module('yoSchoolApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.userName = 'Guest';
   });

@@ -6,11 +6,12 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var MainCtrl,
-    scope;
+  scope,rout;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $route) {
     scope = $rootScope.$new();
+    rout = $route;
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
     });
@@ -18,5 +19,16 @@ describe('Controller: MainCtrl', function () {
 
   it('should attach a list of awesomeThings to the scope', function () {
     expect(scope.awesomeThings.length).toBe(3);
+  });
+
+
+  it('should map routes to controllers', function() {
+
+    expect(rout.routes['/'].controller).toBe('MainCtrl');
+    expect(rout.routes['/'].templateUrl).
+    toEqual('views/main.html');
+
+    // otherwise redirect to
+    expect(rout.routes[null].redirectTo).toEqual('/');
   });
 });
