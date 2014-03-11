@@ -29,6 +29,13 @@ module.exports = function(config) {
         'app/scripts/**/*.js': ['coverage']
     },
 
+  coverageReporter: {
+    reporters:[
+      {type: 'html', dir:'coverage/'},
+      {type: 'text'}
+    ],
+  },
+
     // list of files / patterns to exclude
     exclude: [],
 

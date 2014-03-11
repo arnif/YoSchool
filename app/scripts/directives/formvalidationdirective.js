@@ -2,7 +2,7 @@
 
 angular.module('yoSchoolApp')
 .directive('formValidationDirective', function ($http, $timeout) {
-	// var checking = null;
+  // var checking = null;
  //  return {
  //    require: 'ngModel',
  //    link: function(scope, ele, attrs, c) {
@@ -26,23 +26,23 @@ angular.module('yoSchoolApp')
  //    }
  //  };
 
-	var FOCUS_CLASS = 'ng-focused';
-	return {
-		restrict: 'A',
-		require: 'ngModel',
-		link: function(scope, element, attrs, ctrl) {
-			ctrl.$focused = false;
-			element.bind('focus', function() {
-				// console.log(evt);
-				element.addClass(FOCUS_CLASS);
-				scope.$apply(function() {ctrl.$focused = true;});
-			}).bind('blur', function() {
-				// console.log(evt);
-				element.removeClass(FOCUS_CLASS);
-				scope.$apply(function() {ctrl.$focused = false;});
-			});
-		}
-	};
+  // var FOCUS_CLASS = 'ng-focused';
+  // return {
+  //  restrict: 'A',
+  //  require: 'ngModel',
+  //  link: function(scope, element, attrs, ctrl) {
+  //    ctrl.$focused = false;
+  //    element.bind('focus', function() {
+  //      // console.log(evt);
+  //      element.addClass(FOCUS_CLASS);
+  //      scope.$apply(function() {ctrl.$focused = true;});
+  //    }).bind('blur', function() {
+  //      // console.log(evt);
+  //      element.removeClass(FOCUS_CLASS);
+  //      scope.$apply(function() {ctrl.$focused = false;});
+  //    });
+  //  }
+  // };
 
       // template: '<div></div>',
       // restrict: 'E',

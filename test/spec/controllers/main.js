@@ -6,7 +6,23 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var MainCtrl,
-  scope, location, rootScope, rout, httpbak;
+  scope, location, rootScope, rout, httpbak, service;
+
+  var testService = {
+    getUser: function() {
+      return 'sindris12';
+    },
+    getAdmin: function() {
+      return 'admin';
+    },
+    login: function(user) {
+      if (user === testService.getUser()) {
+        return 200;
+      } else {
+        return 401;
+      }
+    }
+  };
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $location, $route, $httpBackend, $q) {
@@ -16,34 +32,36 @@ describe('Controller: MainCtrl', function () {
     scope = $rootScope.$new();
     httpbak = $httpBackend;
 
+    // $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    // .respond(200, 'true');
+    var deferred = $q.defer();
+    deferred.resolve('somevalue');
 
-    // var deferred = $q.defer();
-    // deferred.resolve('somevalue');
-
-    // spyOn(LoginFactory, 'login').andReturn(deferred.promise);
+    spyOn(testService, 'login').andReturn(deferred.promise);
 
 
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
+      service: testService
 
     });
   }));
 
-  it('should login successfull', function() {
-    // httpbak.expectPOST('http://project3api.haukurhaf.net/api/v1/login')
-    // .respond(200, 'true');
-    // httpbak.flush();
-    expect(scope.data).toBe('foo');
-  });
+  // it('should login successfull', function() {
+  //   // httpbak.expectPOST('http://project3api.haukurhaf.net/api/v1/login')
+  //   // .respond(200, 'true');
+  //   // httpbak.flush();
+  //   // expect(scope.data).toBe('foo');
+  // });
 
 //   it ('should test receive the fulfilled promise', function() {
 //    var result;
 
-//     LoginFactory.login().then(function(returnFromPromise) {
+//     testService.login().then(function(returnFromPromise) {
 //     result = returnFromPromise;
 //   });
 
-//   rootScope.$apply(); // promises are resolved/dispatched only on next $digest cycle
+//   // rootScope.$apply(); // promises are resolved/dispatched only on next $digest cycle
 //   expect(result).toBe('somevalue');
 // });
 
@@ -55,7 +73,7 @@ describe('Controller: MainCtrl', function () {
   it('should be username of length 9', function() {
     scope.username = 'sindris12';
     scope.password = '654321';
-    // scope.signupForm(true);
+    scope.loginForm(true);
     // rootScope.$apply();
     expect(scope.username.length).toBe(9);
   });
@@ -63,6 +81,8 @@ describe('Controller: MainCtrl', function () {
   it('should be password of length 6', function() {
     scope.person.username = 'sindris12';
     scope.person.password = '654321';
+    // httpbak.whenPOST('http://project3api.haukurhaf.net/api/v1/login')
+    // .respond(200, 'true');
     scope.loginForm(true);
     // rootScope.$apply();
     expect(scope.person.password.length).toBe(6);
