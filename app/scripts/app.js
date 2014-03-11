@@ -24,6 +24,18 @@ angular.module('yoSchoolApp', [
         templateUrl: 'views/studenteval.html',
         controller: 'StudentevalCtrl'
       })
+      .when('/Teacher', {
+        templateUrl: 'views/teacher.html',
+        controller: 'TeacherCtrl'
+      })
+      .when('/TeacherNewEval', {
+        templateUrl: 'views/teacherneweval.html',
+        controller: 'TeachernewevalCtrl'
+      })
+      .when('/TeacherShowEval', {
+        templateUrl: 'views/teachershoweval.html',
+        controller: 'TeachershowevalCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

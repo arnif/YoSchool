@@ -38,7 +38,13 @@ angular.module('yoSchoolApp')
           // console.log(LoginFactory.getToken());
           // console.log(LoginFactory.getUser());
           $http.defaults.headers.common.Authentication = 'Basic ' + LoginFactory.getToken();
-          $location.path('/student');
+          // console.log(d.data.User.Role);
+          if (d.data.User.Role === 'Admin') {
+            $location.path('/teacher');
+          } else {
+            $location.path('/student');
+          }
+
 
         } else {
           //login fail
