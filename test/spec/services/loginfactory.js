@@ -7,9 +7,21 @@ describe('Service: LoginFactory', function () {
 
   // instantiate service
   var LoginFactory;
-  beforeEach(inject(function (_LoginFactory_) {
+  var httpbak;
+  beforeEach(inject(function ($httpBackend, _LoginFactory_) {
     LoginFactory = _LoginFactory_;
+    httpbak = $httpBackend;
+    $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    .respond(200, 'true');
   }));
+
+  it('should login successfull', function() {
+    LoginFactory.login('foo', '123456').then(function(data){
+      expect(data).toBeTruthy();
+    });
+    httpbak.flush();
+  });
+
 
   it('should do something', function () {
     expect(!!LoginFactory).toBe(true);
@@ -26,6 +38,8 @@ describe('Service: LoginFactory', function () {
     LoginFactory.setUser(user);
     expect(LoginFactory.getUser()).toBe(user);
   });
+
+
 
 
 

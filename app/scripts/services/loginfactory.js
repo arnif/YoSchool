@@ -33,8 +33,8 @@ angular.module('yoSchoolApp')
     // }
 
     return {
-      login: function(user, pass) {
-        var promise = $http.post( API + 'login', {'user' : user, 'pass': pass }).then(function (response) {
+      login: function(user) {
+        var promise = $http.post( API + 'login', user).then(function (response) {
           // console.log(response);
           return response;
         }, function(error) {

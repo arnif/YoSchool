@@ -11,19 +11,22 @@ angular.module('yoSchoolApp')
     'Karma'
   ];
 
+  $scope.person = {'user': '', 'pass': ''};
+
 
   $scope.submitted = false;
-  $scope.signupForm = function() {
-    if ($scope.signup_form.$valid) {
+  $scope.loginForm = function(isValid) {
+
+    if (isValid) {
       // Submit as normal
-      var user = $scope.signup_form.username.$modelValue;
-      var pass = $scope.signup_form.password.$modelValue;
+      // var user = $scope.login_form.username.$modelValue;
+      // var pass = $scope.login_form.password.$modelValue;
       // console.log(pass);
-      // console.log($scope.signup_form.username.$modelValue);
+      // console.log($scope.login_form.username.$modelValue);
 
       var status;
 
-      LoginFactory.login(user, pass).then(function(d) {
+      LoginFactory.login($scope.person).then(function(d) {
         console.log(d);
         $scope.data = d;
 
@@ -56,7 +59,7 @@ angular.module('yoSchoolApp')
       // $scope.userName = user;
 
     } else {
-      $scope.signup_form.submitted = true;
+      $scope.login_form.submitted = true;
       console.log('form something');
     }
   };

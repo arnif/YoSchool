@@ -27,7 +27,7 @@
   </div>
 </form> -->
 
-<form name="signup_form" novalidate ng-submit="signupForm()" class="form-horizontal">
+<form name="login_form" novalidate ng-submit="loginForm(login_form.$valid)" class="form-horizontal">
     <fieldset>
       <legend>Login</legend>
 
@@ -38,29 +38,29 @@
           <input  type="text"
                   class="form-control"
                   id="inputUsername3"
-                  placeholder="Desired username"
+                  placeholder="username"
                   name="username"
-                  ng-model="signup.username"
+                  ng-model="person.user"
                   ng-minlength=3
                   ng-maxlength=20
-                  ng-class="{error: signup_form.username.$dirty && signup_form.username.$invalid}"
-                  form-validation-directive="username" required />
+                  ng-class="{error: login_form.username.$dirty && login_form.username.$invalid}"
+                   required />
         <div class="error"
-             ng-show="signup_form.username.$dirty && signup_form.username.$invalid">
+             ng-show="login_form.username.$dirty && login_form.username.$invalid">
           <small class="error"
-                 ng-show="signup_form.username.$error.required">
+                 ng-show="login_form.username.$error.required">
                  Please input a username
           </small>
           <small class="error"
-                 ng-show="signup_form.username.$error.minlength">
+                 ng-show="login_form.username.$error.minlength">
                  Your username is required to be at least 3 characters
           </small>
           <small class="error"
-                 ng-show="signup_form.username.$error.maxlength">
+                 ng-show="login_form.username.$error.maxlength">
                  Your username cannot be longer than 20 characters
           </small>
           <small class="error"
-                 ng-show="signup_form.username.$error.unique">
+                 ng-show="login_form.username.$error.unique">
                  That username is taken, please try another
           </small>
         </div>
@@ -75,25 +75,25 @@
           <input  type="password"
                   class="form-control"
                   id="inputPassword3"
-                  placeholder="Desired password"
+                  placeholder="password"
                   name="password"
-                  ng-model="signup.password"
+                  ng-model="person.pass"
                   ng-minlength=6
                   ng-maxlength=75
-                  ng-class="{error: signup_form.password.$dirty && signup_form.password.$invalid}"
-                  form-validation-directive="password" required />
+                  ng-class="{error: login_form.password.$dirty && login_form.password.$invalid}"
+                  required />
         <div class="error"
-             ng-show="signup_form.password.$dirty && signup_form.password.$invalid">
+             ng-show="login_form.password.$dirty && login_form.password.$invalid">
           <small class="error"
-                 ng-show="signup_form.password.$error.required">
+                 ng-show="login_form.password.$error.required">
                  Please input a password
           </small>
           <small class="error"
-                 ng-show="signup_form.password.$error.minlength">
+                 ng-show="login_form.password.$error.minlength">
                  Your password is required to be at least 6 characters
           </small>
           <small class="error"
-                 ng-show="signup_form.password.$error.maxlength">
+                 ng-show="login_form.password.$error.maxlength">
                  Your password cannot be longer than 75 characters
           </small>
         </div>
