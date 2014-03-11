@@ -10,28 +10,6 @@ angular.module('yoSchoolApp')
 
     var meaningOfLife = 42;
 
-
-    // function loginUser(user, pass) {
-    //   $http({
-    //           method: 'POST',
-    //           url: 'http://project3api.haukurhaf.net/api/v1/login',
-    //           data: {'user': user, 'pass': pass }
-    //         }).success(function(data, status, headers, cfg) {
-    //           console.log('SUCCESS');
-    //           console.log(data);
-    //           console.log(status);
-    //           userObj = data;
-    //           return status;
-
-    //         }).error(function(data, status, headers, cfg) {
-    //           console.log('ERROR');
-    //           console.log(data);
-    //           console.log(status);
-    //           console.log(headers);
-    //           console.log(cfg);
-    //         });
-    // }
-
     return {
       login: function(user) {
         var promise = $http.post( API + 'login', user).then(function (response) {

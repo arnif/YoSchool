@@ -16,6 +16,7 @@ describe('Controller: MainCtrl', function () {
     scope = $rootScope.$new();
     httpbak = $httpBackend;
 
+
     // var deferred = $q.defer();
     // deferred.resolve('somevalue');
 
@@ -27,6 +28,13 @@ describe('Controller: MainCtrl', function () {
 
     });
   }));
+
+  it('should login successfull', function() {
+    // httpbak.expectPOST('http://project3api.haukurhaf.net/api/v1/login')
+    // .respond(200, 'true');
+    // httpbak.flush();
+    expect(scope.data).toBe('foo');
+  });
 
 //   it ('should test receive the fulfilled promise', function() {
 //    var result;

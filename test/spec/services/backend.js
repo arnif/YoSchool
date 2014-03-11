@@ -15,4 +15,8 @@ describe('Service: backend', function () {
   //   expect(!!backend).toBe(true);
   // });
 
+  // it('should contain url', function() {
+  //   expect(backend.API).toBe('http://project3api.haukurhaf.net/api/v1/');
+  // });
+
 });
