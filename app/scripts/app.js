@@ -24,15 +24,15 @@ angular.module('yoSchoolApp', [
         templateUrl: 'views/studenteval.html',
         controller: 'StudentevalCtrl'
       })
-      .when('/Teacher', {
+      .when('/teacher', {
         templateUrl: 'views/teacher.html',
         controller: 'TeacherCtrl'
       })
-      .when('/TeacherNewEval', {
+      .when('/teacher/NewEval', {
         templateUrl: 'views/teacherneweval.html',
         controller: 'TeachernewevalCtrl'
       })
-      .when('/TeacherShowEval', {
+      .when('/teacher/ShowEval', {
         templateUrl: 'views/teachershoweval.html',
         controller: 'TeachershowevalCtrl'
       })

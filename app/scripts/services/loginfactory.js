@@ -5,7 +5,7 @@ angular.module('yoSchoolApp')
     // Service logic
     // ...
     var userName = 'TestSubject';
-    var userObj;
+    var userObj = {};
     var tokenCode;
 
     var meaningOfLife = 42;
