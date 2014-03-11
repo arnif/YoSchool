@@ -40,6 +40,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Íslenska</a></li>
             <li><a href="#">English</a></li>
+            <li><a href="#">Logout {{userName}}</a></li>
           </ul>
 
         </div>
@@ -79,13 +80,14 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/evaluation.js"></script>
         <script src="scripts/services/ApiFactory.js"></script>
         <script src="scripts/controllers/student.js"></script>
         <script src="scripts/controllers/StudentEval.js"></script>
         <script src="scripts/services/StudentFactory.js"></script>
         <script src="scripts/services/TeacherFactory.js"></script>
         <script src="scripts/directives/formValidationDirective.js"></script>
+        <script src="scripts/services/LoginFactory.js"></script>
+        <script src="scripts/services/backend.js"></script>
         <!-- endbuild -->
 </body>
 </html>

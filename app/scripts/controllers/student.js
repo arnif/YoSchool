@@ -1,8 +1,8 @@
 'use strict';
 
-//show list of eval 
+//show list of eval
 angular.module('yoSchoolApp')
-  .controller('StudentCtrl', function ($scope, ApiFactory) {
+  .controller('StudentCtrl', function ($scope, ApiFactory, LoginFactory) {
     ApiFactory.getAllEvaluations().then(function(data) {
       console.log('Success data: ', data);
       $scope.evaluations = data;
@@ -11,4 +11,6 @@ angular.module('yoSchoolApp')
     }, function(updateMessage) {
       console.log('Update: ' + updateMessage);
     });
+
+
   });
