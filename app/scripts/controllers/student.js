@@ -12,6 +12,10 @@ angular.module('yoSchoolApp')
     //   console.log('Update: ' + updateMessage);
     // });
 
+    console.log(LoginFactory.getUser());
+
+    $scope.info = LoginFactory.getUser();
+
     $scope.getEvals = function() {
       console.log(LoginFactory.getToken());
 
