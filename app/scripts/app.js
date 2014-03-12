@@ -1,9 +1,6 @@
 'use strict';
 
 angular.module('yoSchoolApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
   'ngRoute'
 ])
   .config(function ($routeProvider) {

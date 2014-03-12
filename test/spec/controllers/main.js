@@ -6,53 +6,60 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var MainCtrl,
-  scope, location, rootScope, rout, httpbak, service;
+  scope, location, rootScope, rout, httpbak, testService;
 
-  var testService = {
-    getUser: function() {
-      return 'sindris12';
-    },
-    getAdmin: function() {
-      return 'admin';
-    },
-    login: function(user) {
-      if (user === testService.getUser()) {
-        return 200;
-      } else {
-        return 401;
-      }
-    }
-  };
+
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $location, $route, $httpBackend, $q) {
+  beforeEach(inject(function ($controller, $rootScope, $location, $route, $httpBackend) {
     rootScope = $rootScope;
     location = $location;
     rout = $route;
     scope = $rootScope.$new();
     httpbak = $httpBackend;
 
+    testService = {
+      getUser: function() {
+        return 'sindris12';
+    },
+      getAdmin: function() {
+        return 'admin';
+    },
+      login: function(user) {
+        if (user === testService.getUser()) {
+          return 200;
+        } else {
+          return 401;
+        }
+      }
+    };
+
     // $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
     // .respond(200, 'true');
-    var deferred = $q.defer();
-    deferred.resolve('somevalue');
+    // var deferred = $q.defer();
+    // deferred.resolve('somevalue');
 
-    spyOn(testService, 'login').andReturn(deferred.promise);
+    // spyOn(testService, 'login').andReturn(deferred.promise);
 
 
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      service: testService
+      // service: testService
 
     });
   }));
 
-  // it('should login successfull', function() {
-  //   // httpbak.expectPOST('http://project3api.haukurhaf.net/api/v1/login')
-  //   // .respond(200, 'true');
-  //   // httpbak.flush();
-  //   // expect(scope.data).toBe('foo');
-  // });
+  it('should login successfull', inject(function($q) {
+
+    httpbak.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    .respond(200, 'true');
+    scope.person.user = 'sindris12';
+    scope.person.pass = '123456';
+    scope.loginForm(true);
+    // httpbak.flush();
+    // rootScope.$apply();
+    expect(scope.person.user).toBe('sindris12');
+  }));
 
 //   it ('should test receive the fulfilled promise', function() {
 //    var result;
@@ -70,34 +77,34 @@ describe('Controller: MainCtrl', function () {
     expect(scope.awesomeThings.length).toBe(3);
   });
 
-  it('should be username of length 9', function() {
-    scope.username = 'sindris12';
-    scope.password = '654321';
+  it('should be user of length 9', function() {
+    scope.person.user = 'sindris12';
+    scope.person.pass = '654321';
     scope.loginForm(true);
     // rootScope.$apply();
-    expect(scope.username.length).toBe(9);
+    expect(scope.person.user.length).toBe(9);
   });
 
-  it('should be password of length 6', function() {
-    scope.person.username = 'sindris12';
-    scope.person.password = '654321';
+  it('should be pass of length 6', function() {
+    scope.person.user = 'sindris12';
+    scope.person.pass = '654321';
     // httpbak.whenPOST('http://project3api.haukurhaf.net/api/v1/login')
     // .respond(200, 'true');
     scope.loginForm(true);
     // rootScope.$apply();
-    expect(scope.person.password.length).toBe(6);
+    expect(scope.person.pass.length).toBe(6);
   });
 
-  it('should be to short password', function() {
-    scope.username = 'sindris12';
-    scope.password = '12';
-    expect(scope.password.length).toBe(2);
+  it('should be to short pass', function() {
+    scope.user = 'sindris12';
+    scope.pass = '12';
+    expect(scope.pass.length).toBe(2);
   });
 
-  it('should be username sindris12', function() {
-    scope.username = 'sindris12';
-    scope.password = '123456';
-    expect(scope.username).toBe('sindris12');
+  it('should be user sindris12', function() {
+    scope.user = 'sindris12';
+    scope.pass = '123456';
+    expect(scope.user).toBe('sindris12');
   });
 
 
