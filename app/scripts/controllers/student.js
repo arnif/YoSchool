@@ -12,9 +12,16 @@ angular.module('yoSchoolApp')
     //   console.log('Update: ' + updateMessage);
     // });
 
-    console.log(LoginFactory.getUser());
+    //console.log(LoginFactory.getUser());
+   
 
     $scope.info = LoginFactory.getUser();
+
+    $scope.courses = StudentFactory.getMyCourses().then(function(data) {
+      console.log(data);
+    });
+
+    
 
     $scope.getEvals = function() {
       console.log(LoginFactory.getToken());
@@ -23,7 +30,6 @@ angular.module('yoSchoolApp')
         console.log(d);
       });
     };
-
 
 
   });

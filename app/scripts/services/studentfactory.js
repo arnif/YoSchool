@@ -25,12 +25,23 @@ angular.module('yoSchoolApp')
       },
       getMyEval: function() {
         var promise = $http.get(API + '/my/evaluations').then(function(response) {
-          console.log(response);
+          //console.log(response);
           return response;
         }, function(error) {
           return error;
         });
         return promise;
+      },
+
+     getMyCourses: function() {
+        var myCourses = $http.get(API + '/my/courses').then(function(response) {
+          //console.log(response);
+          console.log('FOKK JUU');
+          return response;
+        }, function(error) {
+          return error;
+        });
+        return myCourses;
       }
     };
   });
