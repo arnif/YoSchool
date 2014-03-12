@@ -24,6 +24,10 @@ angular.module('yoSchoolApp')
       'teacherQuestions':[]
     };
 
+    $scope.addCourseQuestion = function(what) {
+      console.log('new question');
+    };
+
 
 
 

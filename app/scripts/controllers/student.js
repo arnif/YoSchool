@@ -2,7 +2,7 @@
 
 //show list of eval
 angular.module('yoSchoolApp')
-  .controller('StudentCtrl', function ($scope, ApiFactory, LoginFactory) {
+  .controller('StudentCtrl', function ($scope, $http, StudentFactory, LoginFactory) {
     // ApiFactory.getAllEvaluations().then(function(data) {
     //   console.log('Success data: ', data);
     //   $scope.evaluations = data;
@@ -11,6 +11,15 @@ angular.module('yoSchoolApp')
     // }, function(updateMessage) {
     //   console.log('Update: ' + updateMessage);
     // });
+
+    $scope.getEvals = function() {
+      console.log(LoginFactory.getToken());
+
+      StudentFactory.getMyEval().then(function(d) {
+        console.log(d);
+      });
+    };
+
 
 
   });

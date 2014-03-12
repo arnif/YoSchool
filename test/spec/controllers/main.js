@@ -49,16 +49,20 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should login successfull', inject(function($q) {
+  it('should login successfull', inject(function($httpBackend) {
 
-    httpbak.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
     .respond(200, 'true');
+
     scope.person.user = 'sindris12';
     scope.person.pass = '123456';
+
     scope.loginForm(true);
-    // httpbak.flush();
-    // rootScope.$apply();
-    expect(scope.person.user).toBe('sindris12');
+    // scope.loginForm(true).then(function(data){
+    //   expect(data).toBeTruthy();
+    // });
+    $httpBackend.flush();
+    // expect(scope.person.user).toBe('sindris12');
   }));
 
 //   it ('should test receive the fulfilled promise', function() {

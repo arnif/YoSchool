@@ -27,7 +27,7 @@ angular.module('yoSchoolApp')
       var status;
 
       LoginFactory.login($scope.person).then(function(d) {
-        console.log(d);
+        // console.log(d);
         $scope.data = d;
 
         if (d.status === 200) {
@@ -37,10 +37,10 @@ angular.module('yoSchoolApp')
           LoginFactory.setUser(d.data.User);
           // console.log(LoginFactory.getToken());
           // console.log(LoginFactory.getUser());
-          $http.defaults.headers.common.Authentication = 'Basic ' + LoginFactory.getToken();
+          $http.defaults.headers.common.Authorization = 'Basic ' + LoginFactory.getToken();
           // console.log(d.data.User.Role);
           if (d.data.User.Role === 'admin') {
-            console.log('ADMIN!');
+            // console.log('ADMIN!');
             $location.path('/teacher');
           } else {
             $location.path('/student');
@@ -55,8 +55,6 @@ angular.module('yoSchoolApp')
           $('.loginFail').show();
         }
 
-
-
       });
 
       // console.log(status);
@@ -69,6 +67,7 @@ angular.module('yoSchoolApp')
       $scope.login_form.submitted = true;
       console.log('form something');
     }
+
   };
 
 });

@@ -1,6 +1,8 @@
 <h4>List of evaluations<h4>
 <ul>
-	<li ng-repeat="evaluation in evaluations">
-		<a ng-href="#/student/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
-	</li>
+  <li ng-repeat="evaluation in evaluations">
+    <a ng-href="#/student/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
+  </li>
 </ul>
+
+<button ng-click='getEvals()'>GET EVAL</button>
