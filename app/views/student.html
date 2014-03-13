@@ -10,17 +10,15 @@
         <div class="navbar-collapse collapse" id="navbar-course">
 
          <ul class="nav nav-pills nav-justified navbar-collapse">
+          <span ng-init="courses()"></span>
     <li ng-repeat="name in course">
     <a href="#">{{ name.CourseID }}</a>
   </li>
+
 </ul>
 
-        </div>
-
-    </div>
-
-
-
+  </div>
+</div>
 
 
 <!-- <h4>List of evaluations<h4>
@@ -41,7 +39,7 @@
   <p><strong>Name:</strong> {{ info.FullName }}</p>
 <p><strong>Username:</strong> {{ info.Username }} </p>
 <p><strong>SSN:</strong> {{ info.SSN }} </p>
-<p><strong>Email:</strong> {{ info.Username }}@ru.is</p>
+<p><strong>Email:</strong>{{ info.Username }}@ru.is</p>
 </div>
 
 

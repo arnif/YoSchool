@@ -25,11 +25,11 @@ describe('Controller: StudentCtrl', function () {
 
     studentFactory = {
       getMyCourses: function() {
-        deferred = q.defer();
+        // deferred = q.defer();
         return deferred.promise;
       },
       getMyEval: function() {
-        deferred = q.defer();
+
         return deferred.promise;
       }
     };
@@ -45,6 +45,9 @@ describe('Controller: StudentCtrl', function () {
     scope = $rootScope.$new();
     httpbak = $httpBackend;
     q = $q;
+
+    deferred = q.defer();
+    deferred.resolve('resolveData');
 
     StudentCtrl = $controller('StudentCtrl', {
       $scope: scope,
@@ -62,19 +65,20 @@ describe('Controller: StudentCtrl', function () {
    });
 
 
-  //  it('should get courses', inject(function($httpBackend) {
-  //   var obj = {courseID:'1'};
+   it('should get courses', inject(function($httpBackend) {
+    var obj = {courseID:'1'};
 
-  //   spyOn(studentFactory, 'getMyCourses').andCallThrough();
 
-  //   console.log(scope.courses);
+    spyOn(studentFactory, 'getMyCourses').andReturn(deferred.promise);
+    // console.log(scope.courses);
+    scope.courses();
+    scope.$apply();
 
-  //   deferred.resolve(obj);
-  //   // expect(studentFactory.getMyCourses).toHaveBeenCalledWith({courseID: '1'});
+    expect(scope.course).toBe(undefined);
 
-  //   // expect(scope.course).toBe(obj);
+    // expect(scope.course).toBe(obj);
 
-  // }));
+  }));
 
    it('should get all my evaluations', function() {
     // var obj = {status:200, eval:'first'};

@@ -7,10 +7,15 @@ angular.module('yoSchoolApp')
 
     $scope.info = LoginFactory.getUser();
 
-    $scope.courses = StudentFactory.getMyCourses().then(function(data) {
+    $scope.courses = function() {
+      var promise = StudentFactory.getMyCourses();
 
-      $scope.course = data.data;
-    });
+      promise.then(function(data) {
+
+        $scope.course = data.data;
+      });
+
+    };
 
 
     $scope.getEvals = function() {
