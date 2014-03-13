@@ -9,12 +9,6 @@ angular.module('yoSchoolApp')
 
 
 
-    if (LoginFactory.getToken() !== undefined){
-      // $scope.getEvals();
-
-    }
-
-
     $scope.courses = function() {
       console.log('get courses');
       var promise = StudentFactory.getMyCourses();
