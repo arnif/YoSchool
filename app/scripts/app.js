@@ -33,6 +33,10 @@ angular.module('yoSchoolApp', [
         templateUrl: 'views/teachershoweval.html',
         controller: 'TeachershowevalCtrl'
       })
+      .when('/student/course/:semester/:id', {
+        templateUrl: 'views/course.html',
+        controller: 'CourseCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

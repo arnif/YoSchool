@@ -30,19 +30,20 @@
 <!--
 <button ng-click='getEvals()'>GET EVAL</button> -->
 
-<div class="row">
 
-  <div class="col-xs-6 col-sm-4">
-      <img ng-src="{{info.ImageURL}}" alt="Mynd af þér" class="thumbnail" />
+<div class="media">
+
+  <span class="pull-left">
+    <img class="media-object thumbnail" ng-src="{{info.ImageURL}}" alt="Mynd af þér">
+  </span>
+  <div class="media-body">
+    <address>
+    <h4 class="media-heading">{{info.FullName}}</h4>
+    {{info.Username}}<br>
+    {{info.SSN}}<br>
+    {{info.Username}}@ru.is<br>
+  </address>
   </div>
-<div class="col-xs-6 col-sm-8">
-  <p><strong>Name:</strong> {{ info.FullName }}</p>
-<p><strong>Username:</strong> {{ info.Username }} </p>
-<p><strong>SSN:</strong> {{ info.SSN }} </p>
-<p><strong>Email:</strong>{{ info.Username }}@ru.is</p>
-</div>
-
-
 </div>
 
 

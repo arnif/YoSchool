@@ -15,7 +15,7 @@ describe('Service: LoginFactory', function () {
   }));
 
   it('should login successfull', inject(function(LoginFactory, $httpBackend) {
-    $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    $httpBackend.expect('POST', 'http://dispatch.ru.is/h06/api/v1/login')
     .respond(200, 'true');
 
     LoginFactory.login('foo', '123456').then(function(data){
@@ -25,7 +25,7 @@ describe('Service: LoginFactory', function () {
   }));
 
   it('should not login successfull', inject(function(LoginFactory, $httpBackend) {
-    $httpBackend.expect('POST', 'http://project3api.haukurhaf.net/api/v1/login')
+    $httpBackend.expect('POST', 'http://dispatch.ru.is/h06/api/v1/login')
     .respond(401, 'false');
 
     LoginFactory.login('foo', '123456').then(function(data){

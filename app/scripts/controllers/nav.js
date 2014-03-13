@@ -36,11 +36,16 @@ angular.module('yoSchoolApp')
 
   };
 
+  $scope.setCourseName = function(course) {
+    StudentFactory.setCourseName(course);
+  };
+
     $scope.courses = function() {
-      console.log('get courses');
+      // console.log('get courses');
       var promise = StudentFactory.getMyCourses();
 
       promise.then(function(data) {
+        // console.log(data);
         $scope.course = data.data;
       });
 

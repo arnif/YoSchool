@@ -6,17 +6,8 @@ angular.module('yoSchoolApp')
     // ...
 
     var meaningOfLife = 42;
+    var coursename;
 
-    // var myeval = function() {
-    //   $http({method: 'GET', url: '/api/v1/my/evaluations'}).
-    //   success(function(data, status, headers, config) {
-    //     console.log(data + status + headers + config);
-    //     return data;
-    //   }).
-    //   error(function(data, status, headers, config) {
-    //     console.log(data + status + headers + config);
-    //   });
-    // };
 
     // Public API here
     return {
@@ -41,6 +32,20 @@ angular.module('yoSchoolApp')
           return error;
         });
         return myCourses;
+      },
+      getCourseInfo: function(id, semester) {
+        var promise = $http.get(API + '/courses/' + id + '/' + semester + '/teachers').then(function(response) {
+          return response;
+        }, function(error) {
+          return error;
+        });
+        return promise;
+      },
+      setCourseName: function(name) {
+        coursename = name;
+      },
+      getCourseName: function() {
+        return coursename;
       }
     };
   });
