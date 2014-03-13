@@ -29,6 +29,11 @@ angular.module('yoSchoolApp')
 
     $http.defaults.headers.common.Authorization = '';
 
+    $location.path('/');
+    setTimeout(function() {
+      location.reload();
+    }, 1000);
+
   };
 
     $scope.courses = function() {
