@@ -65,20 +65,6 @@ describe('Controller: StudentCtrl', function () {
    });
 
 
-   it('should get courses', inject(function($httpBackend) {
-    var obj = {courseID:'1'};
-
-
-    spyOn(studentFactory, 'getMyCourses').andReturn(deferred.promise);
-    // console.log(scope.courses);
-    scope.courses();
-    scope.$apply();
-
-    expect(scope.course).toBe(undefined);
-
-    // expect(scope.course).toBe(obj);
-
-  }));
 
    it('should get all my evaluations', function() {
     // var obj = {status:200, eval:'first'};
@@ -91,6 +77,13 @@ describe('Controller: StudentCtrl', function () {
     expect(studentFactory.getMyEval).toHaveBeenCalled();
     console.log(scope.allMyEval);
 
+   });
+
+   it('should call getMyEval', function() {
+    spyOn(studentFactory, 'getMyEval').andReturn(deferred.promise);
+    scope.getEvals();
+    scope.$apply();
+    expect(scope.allMyEval).toBe('resolveData');
    });
 
 

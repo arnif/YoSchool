@@ -36,7 +36,6 @@ angular.module('yoSchoolApp')
      getMyCourses: function() {
         var myCourses = $http.get(API + '/my/courses').then(function(response) {
           //console.log(response);
-          console.log('FOKK JUU');
           return response;
         }, function(error) {
           return error;

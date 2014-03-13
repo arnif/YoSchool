@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-.controller('MainCtrl', function ($scope, $location, $http, LoginFactory) {
+.controller('MainCtrl', function ($scope, $location, $http, LoginFactory, StudentFactory) {
 
   // $scope.userName = LoginFactory.getUsername();
 
@@ -12,7 +12,6 @@ angular.module('yoSchoolApp')
   ];
 
   $scope.person = {'user': 'sindris12', 'pass': 'asdgasdgas'};
-
 
   $scope.loginForm = function(isValid) {
 
@@ -43,7 +42,6 @@ angular.module('yoSchoolApp')
             $location.path('/student');
           }
 
-
         } else {
           //login fail
 
@@ -59,5 +57,9 @@ angular.module('yoSchoolApp')
     }
 
   };
+
+
+
+
 
 });

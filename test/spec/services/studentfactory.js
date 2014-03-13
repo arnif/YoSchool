@@ -11,8 +11,15 @@ describe('Service: StudentFactory', function () {
     StudentFactory = _StudentFactory_;
   }));
 
-  it('should do something', function () {
-    expect(!!StudentFactory).toBe(true);
-  });
+
+  // it('should get my eval',inject(function(StudentFactory, $httpBackend){
+  //   $httpBackend.expect('GET', 'http://project3api.haukurhaf.net/api/v1/my/evaluations')
+  //   .respond(200);
+
+  //   StudentFactory.getMyEval().then(function(data){
+  //     expect(data).toBeTruthy();
+  //   });
+  //   $httpBackend.flush();
+  // }));
 
 });
