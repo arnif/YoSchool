@@ -9,19 +9,24 @@
     <label for="Intro">Kynning</label>
     <textarea class="form-control" id="Intro" placeholder="Kynningar texti"></textarea>
   </div>
-  <div class="form-group">
-  <label>Spurningar um áfanga</label>
-  <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Text</button>
-  <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Single</button>
-  <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Multi</button>
-</div>
+  <div class="row">
+    <div class="col-md-6">
+    <label>Spurningar um áfanga</label>
+    <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Text</button>
+    <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Single</button>
+    <button class="btn btn-mini btn-primary" ng-click="addCourseQuestion()">+ Multi</button>
+    </div>
 
-<div class="form-group">
-  <label>Spurningar um kennara</label>
-  <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Text</button>
-  <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Single</button>
-  <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Multi</button>
-</div>
+
+    <div class="col-md-6">
+      <div class="row">
+        <label>Spurningar um kennara</label>
+        <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Text</button>
+        <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Single</button>
+        <button class="btn btn-mini btn-success" ng-click="addCourseQuestion()">+ Multi</button>
+      </div>
+    </div>
+    </div>
 
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
