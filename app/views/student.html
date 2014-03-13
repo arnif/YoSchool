@@ -1,31 +1,68 @@
-<h4>List of evaluations<h4>
+
+
+
+
+
+<div class="navbar navbar-default nav-courses">
+
+
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-course">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        <div class="navbar-collapse collapse" id="navbar-course">
+
+         <ul class="nav nav-pills nav-justified navbar-collapse">
+    <li ng-repeat="name in course">
+    <a href="#">{{ name.CourseID }}</a>
+  </li>
+</ul>
+
+        </div>
+
+    </div>
+
+
+
+
+
+<!-- <h4>List of evaluations<h4>
 <ul>
   <li ng-repeat="evaluation in evaluations">
     <a ng-href="#/student/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
   </li>
-</ul>
+</ul> -->
+<!--
+<button ng-click='getEvals()'>GET EVAL</button> -->
 
-<button ng-click='getEvals()'>GET EVAL</button>
+<div class="row">
 
-<h4>INFO</h4>
-<img ng-src="{{info.ImageURL}}" />
-<p>Name: {{ info.FullName }}</p>
-<p>Username: {{ info.Username }} </p>
-<p>SSN: {{ info.SSN }} </p>
-
-<h4>Courses</h4>
-
-<div ng-repeat="course in courses">
-<ul>
-  <li ng-repeat="name in course.data">
-    {{ name.CourseID }}
-  </li>
-</ul>
+  <div class="col-xs-6 col-sm-4">
+      <img ng-src="{{info.ImageURL}}" alt="Mynd af þér" class="thumbnail" />
+  </div>
+<div class="col-xs-6 col-sm-8">
+  <p><strong>Name:</strong> {{ info.FullName }}</p>
+<p><strong>Username:</strong> {{ info.Username }} </p>
+<p><strong>SSN:</strong> {{ info.SSN }} </p>
+<p><strong>Email:</strong> {{ info.Username }}@ru.is</p>
 </div>
+
+
+</div>
+
+
+
+
+
+
+
+
 
 <!-- <div ng-repeat="c in courses">
 <ul>
-  <li ng-repeat="name in c.data"> 
+  <li ng-repeat="name in c.data">
   {{ name.CourseID }}
   </li>
 </ul>

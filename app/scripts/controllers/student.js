@@ -3,31 +3,21 @@
 //show list of eval
 angular.module('yoSchoolApp')
   .controller('StudentCtrl', function ($scope, $http, StudentFactory, LoginFactory) {
-    // ApiFactory.getAllEvaluations().then(function(data) {
-    //   console.log('Success data: ', data);
-    //   $scope.evaluations = data;
-    // }, function(errorMessage) {
-    //   console.log('Error: ' + errorMessage);
-    // }, function(updateMessage) {
-    //   console.log('Update: ' + updateMessage);
-    // });
 
-    //console.log(LoginFactory.getUser());
-   
 
     $scope.info = LoginFactory.getUser();
 
     $scope.courses = StudentFactory.getMyCourses().then(function(data) {
-      console.log(data);
+
+      $scope.course = data.data;
     });
 
-    
 
     $scope.getEvals = function() {
-      console.log(LoginFactory.getToken());
 
       StudentFactory.getMyEval().then(function(d) {
-        console.log(d);
+        // console.log(d);
+        $scope.allMyEval = d;
       });
     };
 

@@ -11,7 +11,7 @@ angular.module('yoSchoolApp')
     'Karma'
   ];
 
-  $scope.person = {'user': '', 'pass': ''};
+  $scope.person = {'user': 'sindris12', 'pass': 'asdgasdgas'};
 
 
   $scope.loginForm = function(isValid) {
@@ -24,7 +24,7 @@ angular.module('yoSchoolApp')
       var promise = LoginFactory.login($scope.person);
 
       promise.then(function(d) {
-
+        // console.log(d);
         $scope.data = d;
 
         if (d.status === 200) {
@@ -34,10 +34,18 @@ angular.module('yoSchoolApp')
           LoginFactory.setUser(d.data.User);
           $http.defaults.headers.common.Authorization = 'Basic ' + LoginFactory.getToken();
 
-          $location.path('/student');
+          if (d.data.User.Role === 'admin') {
+
+            $location.path('/teacher');
+
+          } else {
+
+            $location.path('/student');
+          }
 
 
         } else {
+          //login fail
 
           $scope.loginFail = 'Username or password incorrect';
           // $('.loginFail').show();
@@ -47,9 +55,7 @@ angular.module('yoSchoolApp')
 
 
     } else {
-
       $scope.loginFail = 'Failed to login';
-
     }
 
   };

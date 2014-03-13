@@ -6,12 +6,11 @@ describe('Controller: StudentevalCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var StudentevalCtrl,
-    scope, rout;
+    scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $route) {
+  beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    rout = $route;
     StudentevalCtrl = $controller('StudentevalCtrl', {
       $scope: scope
     });
@@ -21,19 +20,5 @@ describe('Controller: StudentevalCtrl', function () {
   //   expect(scope.awesomeThings.length).toBe(3);
   // });
 
-  it('should map routes to controllers', function() {
 
-    expect(rout.routes['/student/evaluation'].templateUrl).
-    toEqual('views/studenteval.html');
-    expect(rout.routes['/student/evaluation'].controller).
-    toEqual('StudentevalCtrl');
-
-    expect(rout.routes['/student/evaluation/:evaluationID'].templateUrl).
-    toEqual('views/studenteval.html');
-    expect(rout.routes['/student/evaluation/:evaluationID'].controller).
-    toEqual('StudentevalCtrl');
-
-      // otherwise redirect to
-    expect(rout.routes[null].redirectTo).toEqual('/');
-  });
 });

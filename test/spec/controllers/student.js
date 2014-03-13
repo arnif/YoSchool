@@ -6,26 +6,88 @@ describe('Controller: StudentCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var StudentCtrl,
-    scope, rout;
+    scope, loginFactory, studentFactory, rootScope, location, httpbak, q, deferred;
 
+  var username = 'sindris12';
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $route) {
-    scope = $rootScope.$new();
-    rout = $route;
-    StudentCtrl = $controller('StudentCtrl', {
-      $scope: scope
+   beforeEach(function(){
+    loginFactory = {
+      getUser: function() {
+        return 'sindris12';
+    },
+      getAdmin: function() {
+        return 'admin';
+    },
+      setUser: function(_User) {
+        username = _User;
+      }
+    };
+
+    studentFactory = {
+      getMyCourses: function() {
+        deferred = q.defer();
+        return deferred.promise;
+      },
+      getMyEval: function() {
+        deferred = q.defer();
+        return deferred.promise;
+      }
+    };
+
+    module(function($provide){
+      $provide.value('LoginFactory', loginFactory);
+      $provide.value('StudentFactory', studentFactory);
     });
-  }));
 
-  it('should map routes to controllers', function() {
+    inject(function ($controller, $rootScope, $location, $httpBackend, $q) {
+    rootScope = $rootScope;
+    location = $location;
+    scope = $rootScope.$new();
+    httpbak = $httpBackend;
+    q = $q;
 
-    expect(rout.routes['/student'].templateUrl).
-    toEqual('views/student.html');
-    expect(rout.routes['/student'].controller).
-    toEqual('StudentCtrl');
-
-    // otherwise redirect to
-    expect(rout.routes[null].redirectTo).toEqual('/');
+    StudentCtrl = $controller('StudentCtrl', {
+      $scope: scope,
+    });
+    rootScope.$apply();
   });
+});
+
+   it('should get user sindris12', function() {
+    // var obj = {user:'sindris12'};
+    spyOn(loginFactory, 'getUser').andCallThrough();
+
+    // deferred.resolve(obj);
+    expect(scope.info).toBe('sindris12');
+   });
+
+
+  //  it('should get courses', inject(function($httpBackend) {
+  //   var obj = {courseID:'1'};
+
+  //   spyOn(studentFactory, 'getMyCourses').andCallThrough();
+
+  //   console.log(scope.courses);
+
+  //   deferred.resolve(obj);
+  //   // expect(studentFactory.getMyCourses).toHaveBeenCalledWith({courseID: '1'});
+
+  //   // expect(scope.course).toBe(obj);
+
+  // }));
+
+   it('should get all my evaluations', function() {
+    // var obj = {status:200, eval:'first'};
+
+    // console.log(scope.getEvals());
+    spyOn(studentFactory, 'getMyEval').andCallThrough();
+    scope.getEvals();
+
+    deferred.resolve();
+    expect(studentFactory.getMyEval).toHaveBeenCalled();
+    console.log(scope.allMyEval);
+
+   });
+
 
 });

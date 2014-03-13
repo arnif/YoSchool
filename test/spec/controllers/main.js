@@ -69,6 +69,23 @@ describe('Controller: MainCtrl', function () {
 
   }));
 
+  it('should login admin successfull', inject(function($httpBackend) {
+    var obj = {status: 200, user:'admin', pass:'123456', data : { Token: 'abcd', User: { Role : 'admin'} } };
+
+    spyOn(testService, 'login').andCallThrough();
+
+    scope.person.user = 'admin';
+    scope.person.pass = '123456';
+
+    scope.loginForm(true);
+    deferred.resolve(obj);
+    expect(testService.login).toHaveBeenCalledWith({user: 'admin', pass:'123456'});
+    rootScope.$apply();
+
+    expect(location.path()).toBe('/teacher');
+
+  }));
+
   it('should NOT login successfull', inject(function($httpBackend) {
     var obj = {status: 401, user:'sindris12', pass:'123456', data : { Token: 'abcd', User: 'sindris12', Role: 'admin' } };
 
