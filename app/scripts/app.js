@@ -29,6 +29,10 @@ angular.module('yoSchoolApp', [
         templateUrl: 'views/teacherneweval.html',
         controller: 'TeachernewevalCtrl'
       })
+      .when('/teacher/NewEval/:evaluationID', {
+        templateUrl: 'views/teacherneweval.html',
+        controller: 'TeachernewevalCtrl'
+      })
       .when('/teacher/ShowEval', {
         templateUrl: 'views/teachershoweval.html',
         controller: 'TeachershowevalCtrl'
