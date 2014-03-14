@@ -16,14 +16,18 @@ angular.module('yoSchoolApp')
     //   $location.path('/');
     // }
 
+    $scope.old = true;
+
 
     var evaluationID = $routeParams.evaluationID;
     console.log(evaluationID);
 
     if (evaluationID !== undefined) {
       TeacherFactory.getEvalTemplateById(evaluationID).then(function(data) {
-        console.log(data);
+        // console.log(data);
         $scope.evaluation = data.data;
+        $scope.old = false;
+        $scope.ID = evaluationID;
       }, function(error) {
         console.log('failed to fetch');
       });
@@ -70,10 +74,35 @@ angular.module('yoSchoolApp')
 
 
 
-    $scope.postTemplate = function() {
+    $scope.postTemplate = function(publish) {
       var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
 
       pormise.then(function(data){
+        console.log(data);
+        if (publish) {
+          console.log('save and publish');
+          // $scope.publishTemplate(data.ID);
+        }
+        $location.path('/teacher');
+
+      });
+    };
+
+    $scope.publishTemplate = function(id) {
+      // console.log('publish ' + id);
+      var startDate = new Date();
+
+      var endDate = new Date($scope.endDate);
+      var sendTemplate = {
+        TemplateID: id,
+        StartDate: startDate.toISOString(),
+        EndDate: endDate.toISOString()
+      };
+
+      // console.log(sendTemplate);
+      var promise = TeacherFactory.publishTemplate(sendTemplate);
+
+      promise.then(function(data){
         console.log(data);
       });
     };

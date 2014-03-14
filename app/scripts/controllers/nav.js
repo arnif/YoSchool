@@ -21,6 +21,23 @@ angular.module('yoSchoolApp')
 
   });
 
+  $scope.goHome = function() {
+     var role = LoginFactory.getUser();
+    // console.log(role.Role);
+
+    // if (role.Role !== 'admin') {
+    //   $location.path('/');
+    // }
+
+    if (role.Role === 'admin') {
+      $location.path('/teacher');
+    } else if (role.Role) {
+      $location.path('/student');
+    } else {
+      $location.path('/');
+    }
+  };
+
   $scope.logout = function() {
 
     $scope.username = 'User';

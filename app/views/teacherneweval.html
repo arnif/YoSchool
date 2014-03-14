@@ -1,29 +1,29 @@
-<form role="form" ng-submit="postTemplate()">
+<form role="form">
   <div class="form-group">
     <label for="titleIS">Titill</label>
-    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS">
+    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old">
   </div>
    <div class="form-group">
     <label for="titleEN">Title</label>
-    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN">
+    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN" ng-disabled="!old">
   </div>
   <div class="form-group">
     <label for="Kynning">Kynning</label>
-    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS"></textarea>
+    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS" ng-disabled="!old"> </textarea>
   </div>
    <div class="form-group">
     <label for="Intro">Intro</label>
-    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN"></textarea>
+    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old"></textarea>
   </div>
 
   <div class="form-group" ng-repeat="question in evaluation.CourseQuestions">
     <label ng-show="question.Type == 'multiple' || question.Type == 'single'">{{ question.Type }}</label>
-    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS">
+    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
         <li ng-repeat="answer in question.Answers track by $index">
-          <input class="form-control" ng-model="answer" />
+          <input class="form-control" ng-model="answer" ng-disabled="!old">
         </li>
       </ul>
       <button class="btn btn-info" ng-click="addAnswer(question)">Bæta við svari</button>
@@ -32,7 +32,7 @@
 
   </div>
 
-
+<span ng-show="old">
   <div class="row">
     <div class="col-md-6">
     <label>Spurningar um áfanga</label>
@@ -52,21 +52,19 @@
     </div>
     </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+</span>
+
+<div class="form-group">
+  <label for="EndDate">End date</label>
+  <input class="form-control" type="datetime-local" name="EndDate" id="EndDate" ng-model="endDate">
+</div>
+
+<span ng-show="old">
+  <button class="btn btn-default" ng-click="postTemplate()">Save</button>
+  <button class="btn btn-danger" ng-click="postTemplate(true)">Save and publish</button>
+
+</span>
+<span ng-show="!old">
+  <button class="btn btn-danger" ng-click="publishTemplate(ID)">Publish</button></span>
 </form>
 
-
-<!-- <div ng-repeat="question in evaluation.CourseQuestions">
-    <input ng-model="question.TextIS" class="form-control" placeholder="Texti á spurningu" />
-    <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
-      <p>Svarmöguleikar:</p>
-      <ul>
-        <li ng-repeat="answer in question.Answers track by $index">
-          <input ng-model="answer" />
-        </li>
-      </ul>
-      <button class="btn btn-mini" ng-click="addAnswer(question)">Bæta við svarmöguleika</button>
-    </div>
-  </div>
-  <button class="btn btn-mini" ng-click="addCourseQuestion()">Bæta við spurningu</button>
- -->
