@@ -1,6 +1,7 @@
 <span ng-init="getAllTemplates()"></span>
 
 
+
 <h4>All templates<h4>
 <ul>
   <li ng-repeat="templ in templates">
@@ -10,3 +11,19 @@
 
 
 <a class="btn btn-primary" href='#/teacher/NewEval'>New Template</a>
+
+<span ng-init="getAllEvals()"></span>
+<!-- <button ng-click="getAllEvals()" class="btn btn-info">All eval</button> -->
+<h4>Closed Evaluations</h4>
+<ul>
+  <li ng-repeat="eval in evaluations">
+    <span ng-show="eval.Status == 'closed'">{{eval.TemplateTitleIS}}</span>
+  </li>
+</ul>
+
+<h4>Open Evaluations</h4>
+<ul>
+  <li ng-repeat="eval in evaluations">
+    <span ng-show="eval.Status == 'open'">{{eval.TemplateTitleIS}}</span>
+  </li>
+</ul>

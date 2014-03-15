@@ -30,7 +30,19 @@ angular.module('yoSchoolApp')
         });
         return promise;
       },
+      getAllEval: function() {
+        var promise = $http.get(API + '/evaluations').then(function(response) {
+          // console.log(response);
+          return response;
+        }, function(error) {
+          // console.log(error);
+          return error;
+        });
+        return promise;
+      },
       postEvalTemplate: function(template) {
+        console.log('Template to save');
+        console.log(template);
         var promise = $http.post(API + '/evaluationtemplates', template).then(function(response) {
           return response;
         }, function(error){

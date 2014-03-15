@@ -1,1 +1,110 @@
-<p>This is the StudentEval view.</p>
+<span ng-init="evaluation()"></span>
+
+
+
+<h3>{{evalu.TitleIS}}
+<span class="text-muted"><small>{{courseID}}</small></span>
+</h3>
+
+
+<h5>{{evalu.IntoTextIS}}<h5>
+
+<form ng-submit="send()">
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Spurningar um áfangan</h3>
+  </div>
+  <div class="panel-body">
+
+      <div ng-repeat="q in evalu.CourseQuestions">
+
+
+      <div class="form-group" ng-if="q.Type == 'text'">
+      <label>{{ q.TextIS }}</label>
+      <textarea class="form-control" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
+      </div>
+
+      <div class="form-group" ng-if="q.Type == 'single'">
+
+      <label>{{ q.TextIS }}</label>
+
+          <div ng-repeat="answer in q.Answers">
+
+              <input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+
+          </div>
+
+      </div>
+
+      {{radio}}
+
+      <div class="form-group" ng-if="q.Type == 'multiple'">
+
+      <label>{{ q.TextIS }}</label>
+
+          <div ng-repeat="answer in q.Answers">
+
+              <input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+
+          </div>
+
+
+      </div>
+
+      </div>
+
+  </div>
+</div>
+
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Spurningar um kennara</h3>
+  </div>
+  <div class="panel-body">
+
+      <div ng-repeat="q in evalu.TeacherQuestions">
+
+
+      <div class="form-group" ng-if="q.Type == 'text'">
+      <label>{{ q.TextIS }}</label>
+      <textarea class="form-control" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
+      </div>
+
+      <div class="form-group" ng-if="q.Type == 'single'">
+
+      <label>{{ q.TextIS }}</label>
+
+          <div ng-repeat="answer in q.Answers">
+
+              <input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+
+          </div>
+
+      </div>
+
+      <div class="form-group" ng-if="q.Type == 'multiple'">
+
+      <label>{{ q.TextIS }}</label>
+
+          <div ng-repeat="answer in q.Answers">
+
+              <input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+
+          </div>
+
+      </div>
+
+      </div>
+
+  </div>
+</div>
+<input type="submit" class="btn btn-danger" id="submit" value="Senda">
+
+</form>
+
+
+
+
+

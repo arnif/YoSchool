@@ -46,10 +46,33 @@ angular.module('yoSchoolApp')
 
 
 
-    $scope.addAnswer = function(question) {
+    $scope.addAnswer = function(question, is, en) {
       console.log(question);
-      question.Answers.push('New answer');
+      var aObj = {
+        ID: question.Answers.length,
+        TextIS: '',
+        TextEN: '',
+        ImageURL: '',
+        Weight: question.Answers.length + 1
+      };
+      question.Answers.push(aObj);
     };
+
+    $scope.updateAnswer = function(answer) {
+      console.log('update this');
+      console.log(answer);
+    };
+
+
+
+    //array of edited fields (optional)
+
+    //handle method for field1 blur
+    $scope.doneEditing = function () {
+      // console.log(question);
+      // $scope.countedValue = 'Blur from field1:  ' + $scope.value1 + ' * ' + $scope.value2 + ' = ' + $scope.value1 * $scope.value2;
+    };
+
 
 
     $scope.addCourseQuestion = function(what) {
@@ -65,11 +88,21 @@ angular.module('yoSchoolApp')
         Answers: []
       });
 
+
+
     };
 
 
     $scope.addTeacherQuestion = function(what) {
-      console.log('new teacher question ' + what);
+      // console.log('new teacher question ' + what);
+      $scope.evaluation.TeacherQuestions.push({
+        ID: $scope.evaluation.TeacherQuestions.length,
+        TextIS: '',
+        TextEN: '',
+        ImageURL: '',
+        Type: what,
+        Answers: []
+      });
     };
 
 
@@ -90,7 +123,7 @@ angular.module('yoSchoolApp')
 
     $scope.publishTemplate = function(id) {
       // console.log('publish ' + id);
-      var startDate = new Date();
+      var startDate = new Date($scope.startDate);
 
       var endDate = new Date($scope.endDate);
       var sendTemplate = {

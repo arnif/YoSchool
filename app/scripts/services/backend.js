@@ -2,4 +2,4 @@
 //http://dispatch.ru.is/h06
 //http://project3api.haukurhaf.net
 angular.module('yoSchoolApp')
-  .constant('API', 'http://project3api.haukurhaf.net/api/v1/');
+  .constant('API', 'http://dispatch.ru.is/h06/api/v1/');

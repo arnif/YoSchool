@@ -16,55 +16,143 @@
     <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old"></textarea>
   </div>
 
+
+<span ng-show="!old">
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body">
+    Panel content
+  </div>
+  <div class="panel-footer">Panel footer</div>
+</div> -->
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+    <h3 class="panel-title">Spurningar um áfanga</h3>
+  </div>
+  <div class="panel-body">
   <div class="form-group" ng-repeat="question in evaluation.CourseQuestions">
-    <label ng-show="question.Type == 'multiple' || question.Type == 'single'">{{ question.Type }}</label>
+    <label ng-if="question.Type == 'multiple'">Krossaspurning (Mörg svör)</label>
+    <label ng-if="question.Type == 'single'">Krossaspurning (Eitt svar)</label>
+    <label ng-if="question.Type == 'text'">Textaspurning</label>
     <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
+    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
         <li ng-repeat="answer in question.Answers track by $index">
-          <input class="form-control" ng-model="answer" ng-disabled="!old">
+          <label>Svar {{answer.Weight}}</label>
+          <div class="input-group">
+          <span class="input-group-addon">IS&nbsp;</span>
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">EN</span>
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+        </div>
         </li>
       </ul>
-      <button class="btn btn-info" ng-click="addAnswer(question)">Bæta við svari</button>
+      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button>
 
     </div>
 
   </div>
+  </div>
 
-<span ng-show="old">
-  <div class="row">
-    <div class="col-md-6">
-    <label>Spurningar um áfanga</label>
-    <p><button class="btn btn-mini btn-primary" ng-click="addCourseQuestion('text')">+ Text</button></p>
-    <p><button class="btn btn-mini btn-primary" ng-click="addCourseQuestion('single')">+ Single</button></p>
-    <p><button class="btn btn-mini btn-primary" ng-click="addCourseQuestion('multiple')">+ Multi</button></p>
+  <span ng-show="old">
+    <div class="panel-footer">
+    <button class="btn btn-mini btn-info" ng-click="addCourseQuestion('text')">+ Text</button>
+    <button class="btn btn-mini btn-info" ng-click="addCourseQuestion('single')">+ Single</button>
+    <button class="btn btn-mini btn-info" ng-click="addCourseQuestion('multiple')">+ Multi</button>
+    </div>
+  </span>
+  </div>
+
+
+
+
+
+    <div class="panel panel-success">
+    <div class="panel-heading">
+    <h3 class="panel-title">Spurningar um Kennara</h3>
+  </div>
+  <div class="panel-body">
+  <div class="form-group" ng-repeat="question in evaluation.TeacherQuestions">
+    <label ng-if="question.Type == 'multiple'">Krossaspurning (Mörg svör)</label>
+    <label ng-if="question.Type == 'single'">Krossaspurning (Eitt svar)</label>
+    <label ng-if="question.Type == 'text'">Textaspurning</label>
+    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
+    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
+    <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
+      <label>Svarmoguleikar</label>
+      <ul>
+        <li ng-repeat="answer in question.Answers track by $index">
+          <label>Svar {{answer.Weight}}</label>
+          <div class="input-group">
+          <span class="input-group-addon">IS&nbsp;</span>
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">EN</span>
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+        </div>
+        </li>
+      </ul>
+      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button>
+
     </div>
 
+  </div>
+  </div>
 
-    <div class="col-md-6">
+    <span ng-show="old">
+    <div class="panel-footer">
+    <button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('text')">+ Text</button>
+    <button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('single')">+ Single</button>
+    <button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('multiple')">+ Multi</button>
+    </div>
+  </span>
+  </div>
+
+
+
+
+
+
+
+
+
+<!--     <div class="col-md-6">
       <div class="row">
         <label>Spurningar um kennara</label>
         <p><button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('text')">+ Text</button></p>
         <p><button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('single')">+ Single</button></p>
         <p><button class="btn btn-mini btn-success" ng-click="addTeacherQuestion('multi')">+ Multi</button></p>
       </div>
-    </div>
-    </div>
+    </div> -->
 
-</span>
+
+</span> <!--loka old-->
+
+<span ng-show="!old">
+<div class="form-group">
+  <label for="StartDate">Start date</label>
+  <input class="form-control" type="datetime-local" name="StartDate" id="StartDate" ng-model="startDate">
+</div>
 
 <div class="form-group">
   <label for="EndDate">End date</label>
   <input class="form-control" type="datetime-local" name="EndDate" id="EndDate" ng-model="endDate">
 </div>
+</span>
 
 <span ng-show="old">
   <button class="btn btn-default" ng-click="postTemplate()">Save</button>
-  <button class="btn btn-danger" ng-click="postTemplate(true)">Save and publish</button>
+<!--   <button class="btn btn-danger" ng-click="postTemplate(true)">Save and publish</button> -->
 
 </span>
 <span ng-show="!old">
   <button class="btn btn-danger" ng-click="publishTemplate(ID)">Publish</button></span>
 </form>
+
 

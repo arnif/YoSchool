@@ -1,34 +1,4 @@
-<!-- <div class="navbar navbar-default nav-courses">
 
-
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-course">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-        <div class="navbar-collapse collapse" id="navbar-course">
-
-         <ul class="nav nav-pills nav-justified navbar-collapse">
-
-    <li ng-repeat="name in course()">
-    <a href="#">{{ name.CourseID }}</a>
-  </li>
-
-</ul>
-
-  </div>
-</div> -->
-
-
-<!-- <h4>List of evaluations<h4>
-<ul>
-  <li ng-repeat="evaluation in evaluations">
-    <a ng-href="#/student/evaluation/{{ evaluation.ID }}">{{ evaluation.TitleIS }}</a>
-  </li>
-</ul> -->
-<!--
-<button ng-click='getEvals()'>GET EVAL</button> -->
 
 <span ng-init="getEvals()"></span>
 <div class="media">
@@ -46,9 +16,16 @@
   </div>
 </div>
 
-<!-- <span ng-init="getEvals()"></span> -->
 
 
+<span ng-init="getEvals()"></span>
+<h4>List of unanswerd Evaluations<h4>
+<ul>
+  <li ng-repeat="evaluation in allMyEval">
+    <a ng-href="#/student/evaluation/{{ evaluation.CourseID }}/20141/{{evaluation.ID}}">{{evaluation.CourseNameEN }}</a>
+    <span class="text-muted"><small>{{ evaluation.CourseID }}</small></span>
+  </li>
+</ul>
 
 
 

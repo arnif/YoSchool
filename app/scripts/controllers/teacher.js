@@ -26,4 +26,12 @@ angular.module('yoSchoolApp')
       });
     };
 
+    $scope.getAllEvals = function() {
+      var promise = TeacherFactory.getAllEval();
+
+      promise.then(function(data) {
+        $scope.evaluations = data.data;
+      });
+    };
+
   });

@@ -11,7 +11,7 @@ angular.module('yoSchoolApp')
     'Karma'
   ];
 
-  $scope.person = {'user': 'admin', 'pass': 'asdgasdgas'};
+  $scope.person = {'user': 'sindris12', 'pass': 'asdgasdgas'};
 
   $scope.loginForm = function(isValid) {
 

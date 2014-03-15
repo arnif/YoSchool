@@ -23,7 +23,14 @@ angular.module('yoSchoolApp')
         });
         return promise;
       },
-
+      getEvalById: function(courseID, semester, evaluationID) {
+        var promise = $http.get(API + '/courses/' + courseID +'/' + semester + '/evaluations/'+ evaluationID).then(function(response){
+          return response;
+        }, function(error) {
+          return error;
+        });
+        return promise;
+      },
      getMyCourses: function() {
         var myCourses = $http.get(API + '/my/courses').then(function(response) {
           //console.log(response);
