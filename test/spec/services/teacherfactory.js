@@ -75,13 +75,19 @@ describe('Service: TeacherFactory', function () {
     $httpBackend.flush();
   }));
 
-  /*
+  
     it('should post evalTemplates', inject(function (TeacherFactory, $httpBackend, API) {
-    var id = 1;
+    var template = {
+    'ID': 1,
+    'TitleIS': 'sample string 2',
+    'TitleEN': 'sample string 3',
+    'IntroTextIS': 'sample string 4',
+    'IntroTextEN': 'sample string 5',
+    'CourseQuestions': {} };
 
-    $httpBackend.expect('POST', API + '/evaluationtemplates/' + id).respond(200, 'OK');
+    $httpBackend.expect('POST', API + '/evaluationtemplates', template).respond(200, 'OK');
 
-    TeacherFactory.getEvalTemplateById(id).then(function(data) {
+    TeacherFactory.postEvalTemplate(template).then(function(data) {
       expect(data.status).toBe(200);
     });
 
@@ -89,16 +95,47 @@ describe('Service: TeacherFactory', function () {
   }));
 
   it('should not post', inject(function (TeacherFactory, $httpBackend, API) {
-    var id = 99;
+    var template = {};
 
-    $httpBackend.expect('POST', API + '/evaluationtemplates/' + id).respond(204, 'No Content');
+    $httpBackend.expect('POST', API + '/evaluationtemplates', template).respond(404, 'No Content');
 
-    TeacherFactory.getEvalTemplateById(id).then(function(data) {
-      expect(data.status).toBe(204);
+    TeacherFactory.postEvalTemplate(template).then(function(data) {
+      expect(data.status).toBe(404);
     });
 
     $httpBackend.flush();
-  
+
   }));
-*/
+
+      it('should publish Templates', inject(function (TeacherFactory, $httpBackend, API) {
+    var template = {
+    'ID': 1,
+    'TitleIS': 'sample string 2',
+    'TitleEN': 'sample string 3',
+    'IntroTextIS': 'sample string 4',
+    'IntroTextEN': 'sample string 5',
+    'CourseQuestions': {} };
+
+    $httpBackend.expect('POST', API + '/evaluations', template).respond(200, 'OK');
+
+    TeacherFactory.publishTemplate(template).then(function(data) {
+      expect(data.status).toBe(200);
+    });
+
+    $httpBackend.flush();
+  }));
+
+  it('should not publish template', inject(function (TeacherFactory, $httpBackend, API) {
+    var template = {};
+
+    $httpBackend.expect('POST', API + '/evaluations', template).respond(404, 'No Content');
+
+    TeacherFactory.publishTemplate(template).then(function(data) {
+      expect(data.status).toBe(404);
+    });
+
+    $httpBackend.flush();
+
+  }));
+
 });

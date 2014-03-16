@@ -5,15 +5,11 @@ angular.module('yoSchoolApp')
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
     var coursename;
 
 
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      },
       getMyEval: function() {
         var promise = $http.get(API + '/my/evaluations').then(function(response) {
           //console.log(response);
