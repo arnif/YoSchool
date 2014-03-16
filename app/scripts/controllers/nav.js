@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-  .controller('NavCtrl', function ($scope, StudentFactory, LoginFactory, $location, $http, LangFactory, $routeParams, $route) {
+  .controller('NavCtrl', function ($scope, StudentFactory, LoginFactory, $location, $http, LangFactory, $routeParams) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -73,7 +73,7 @@ angular.module('yoSchoolApp')
       console.log(lang);
       LangFactory.setLang(lang);
       console.log($location.path());
-      $route.reload();
+      // $route.reload();
 
 
     };

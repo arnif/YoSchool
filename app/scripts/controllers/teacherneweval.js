@@ -123,6 +123,9 @@ angular.module('yoSchoolApp')
 
       promise.then(function(data){
         console.log(data);
+        if (data.status === 204) {
+          $location.path('/teacher');
+        }
       });
     };
 
