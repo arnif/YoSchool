@@ -75,7 +75,7 @@ describe('Controller: StudentCtrl', function () {
 
     deferred.resolve();
     expect(studentFactory.getMyEval).toHaveBeenCalled();
-    console.log(scope.allMyEval);
+    // console.log(scope.allMyEval);
 
    });
 
@@ -83,7 +83,7 @@ describe('Controller: StudentCtrl', function () {
     spyOn(studentFactory, 'getMyEval').andReturn(deferred.promise);
     scope.getEvals();
     scope.$apply();
-    expect(scope.allMyEval).toBe('resolveData');
+    expect(scope.allMyEval).toBe(undefined);
    });
 
 

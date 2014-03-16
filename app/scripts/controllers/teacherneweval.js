@@ -20,7 +20,7 @@ angular.module('yoSchoolApp')
 
 
     var evaluationID = $routeParams.evaluationID;
-    console.log(evaluationID);
+    // console.log(evaluationID);
 
     if (evaluationID !== undefined) {
       TeacherFactory.getEvalTemplateById(evaluationID).then(function(data) {
@@ -28,9 +28,8 @@ angular.module('yoSchoolApp')
         $scope.evaluation = data.data;
         $scope.old = false;
         $scope.ID = evaluationID;
-      }, function(error) {
-        console.log('failed to fetch');
       });
+
     } else {
 
       $scope.evaluation = {
@@ -58,21 +57,11 @@ angular.module('yoSchoolApp')
       question.Answers.push(aObj);
     };
 
-    $scope.updateAnswer = function(answer) {
-      console.log('update this');
-      console.log(answer);
-    };
 
-
-
-    //array of edited fields (optional)
-
-    //handle method for field1 blur
-    $scope.doneEditing = function () {
-      // console.log(question);
-      // $scope.countedValue = 'Blur from field1:  ' + $scope.value1 + ' * ' + $scope.value2 + ' = ' + $scope.value1 * $scope.value2;
-    };
-
+    // $scope.updateAnswer = function(answer) {
+    //   console.log('update this');
+    //   console.log(answer);
+    // };
 
 
     $scope.addCourseQuestion = function(what) {
@@ -112,10 +101,7 @@ angular.module('yoSchoolApp')
 
       pormise.then(function(data){
         console.log(data);
-        if (publish) {
-          console.log('save and publish');
-          // $scope.publishTemplate(data.ID);
-        }
+
         $location.path('/teacher');
 
       });

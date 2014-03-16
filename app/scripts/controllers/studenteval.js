@@ -3,6 +3,12 @@
 //show Eval to be answerd
 angular.module('yoSchoolApp')
 .controller('StudentevalCtrl', function ($scope, $routeParams, StudentFactory, LoginFactory) {
+  $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+
 
   $scope.courseID = $routeParams.courseID;
   $scope.semester = $routeParams.semester;
@@ -19,16 +25,13 @@ angular.module('yoSchoolApp')
     });
   };
 
-  $scope.radio = undefined;
-
-
 
   $scope.send = function() {
     var answers = [];
 
 
     angular.forEach($scope.evalu.CourseQuestions, function(v){
-       // console.log(v);
+       console.log(v);
        var csvar;
 
        if(v.Type === 'text') {
@@ -38,7 +41,7 @@ angular.module('yoSchoolApp')
         csvar = document.querySelector('input[name="' + v.ID + '"]:checked').value;
 
        } else {
-        //checkbox ??
+        //checkbox
         var checkboxes = document.getElementsByName(v.ID);
         var vals = '';
         for (var i=0, n=checkboxes.length;i<n;i++) {
@@ -64,7 +67,7 @@ angular.module('yoSchoolApp')
         tsvar = document.querySelector('input[name="' + v.ID + '"]:checked').value;
 
        } else {
-        //checkbox ??
+        //checkbox
         var checkboxes = document.getElementsByName(v.ID);
         var vals = '';
         for (var i=0, n=checkboxes.length;i<n;i++) {
@@ -80,7 +83,5 @@ angular.module('yoSchoolApp')
 
     // console.log('send');
   };
-
-
 
 });

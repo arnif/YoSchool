@@ -31,7 +31,7 @@ angular.module('yoSchoolApp')
 
     if (role.Role === 'admin') {
       $location.path('/teacher');
-    } else if (role.Role) {
+    } else if (role.Role === 'student') {
       $location.path('/student');
     } else {
       $location.path('/');
@@ -42,14 +42,12 @@ angular.module('yoSchoolApp')
 
     $scope.username = 'User';
 
+    LoginFactory.setUser('');
     LoginFactory.setToken('');
 
     $http.defaults.headers.common.Authorization = '';
 
     $location.path('/');
-    setTimeout(function() {
-      location.reload();
-    }, 1000);
 
   };
 

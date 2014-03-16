@@ -9,7 +9,7 @@ angular.module('yoSchoolApp')
       'Karma'
     ];
 
-    console.log(LoginFactory.getToken());
+    // console.log(LoginFactory.getToken());
 
     $scope.getAllTemplates = function() {
       console.log('get it');
@@ -19,12 +19,12 @@ angular.module('yoSchoolApp')
       });
     };
 
-    $scope.getTemplateById = function(id) {
-      console.log(id);
-      TeacherFactory.getEvalTemplateById(id).then(function(d) {
-        console.log(d);
-      });
-    };
+    // $scope.getTemplateById = function(id) {
+    //   console.log(id);
+    //   TeacherFactory.getEvalTemplateById(id).then(function(d) {
+    //     console.log(d);
+    //   });
+    // };
 
     $scope.getAllEvals = function() {
       var promise = TeacherFactory.getAllEval();
