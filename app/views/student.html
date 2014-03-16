@@ -17,13 +17,29 @@
 </div>
 
 
+<h4 ng-if="lan == 'en'">List of unanswerd Evaluations</h4>
+<h4 ng-if="lan == 'is'">Listi af ósvöruðum kennslumötum</h4>
 
-<span ng-init="getEvals()"></span>
-<h4>List of unanswerd Evaluations<h4>
-<ul>
-  <li ng-repeat="evaluation in allMyEval">
-    <a ng-href="#/student/evaluation/{{ evaluation.CourseID }}/20141/{{evaluation.ID}}">{{evaluation.CourseNameEN }}</a>
+
+<table class="table table-hover">
+
+  <th ng-if="lan == 'is'">Áfangi</th>
+  <th ng-if="lan == 'en'">Course</th>
+  <th></th>
+
+<tr ng-repeat="evaluation in allMyEval">
+  <td>
+<a ng-href="#/student/evaluation/{{ evaluation.CourseID }}/20141/{{evaluation.ID}}">
+  <span ng-if="lan == 'is'">{{evaluation.CourseNameIS }}</span>
+  <span ng-if="lan == 'en'"> {{evaluation.CourseNameEN}} </span></a>
+</td>
+  <td>
     <span class="text-muted"><small>{{ evaluation.CourseID }}</small></span>
-  </li>
-</ul>
+</td>
+
+</tr>
+
+</table>
+
+
 

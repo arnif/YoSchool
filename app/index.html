@@ -53,10 +53,16 @@
       {{username}}<span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#/student">Um mig</a></li>
-        <li><a href="#">Íslenska</a></li>
-            <li><a href="#">English</a></li>
-      <li><a href="#" ng-click="logout()">Útskrá</a></li>
+      <li><a href="#/student">
+        <span ng-if="lan == 'is'">Um mig</span>
+        <span ng-if="lan == 'en'">About</span>
+      </a></li>
+        <li><a href="" ng-click="changeLang('is')">Íslenska</a></li>
+            <li><a href="" ng-click="changeLang('en')">English</a></li>
+      <li><a href="#" ng-click="logout()">
+        <span ng-if="lan == 'is'">Útskrá</span>
+        <span ng-if="lan == 'en'">Log Out</span>
+      </a></li>
     </ul>
   </li>
 
@@ -111,6 +117,7 @@
         <script src="scripts/controllers/Course.js"></script>
         <script src="scripts/directives/myFocus.js"></script>
         <script src="scripts/directives/myBlur.js"></script>
+        <script src="scripts/services/LangFactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

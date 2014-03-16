@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-  .controller('CourseCtrl', function ($scope, $routeParams, StudentFactory) {
+  .controller('CourseCtrl', function ($scope, $routeParams, StudentFactory, LangFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.lan = LangFactory.getLang();
 
     var id = $routeParams.id;
     var semester = $routeParams.semester;

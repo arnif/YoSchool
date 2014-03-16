@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-  .controller('NavCtrl', function ($scope, StudentFactory, LoginFactory, $location, $http) {
+  .controller('NavCtrl', function ($scope, StudentFactory, LoginFactory, $location, $http, LangFactory, $routeParams, $route) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+  $scope.lan = LangFactory.getLang();
 
   $scope.username = 'User';
 
@@ -15,6 +17,7 @@ angular.module('yoSchoolApp')
     if (LoginFactory.getToken() !== undefined){
 
       $scope.courses();
+      $scope.lan = LangFactory.getLang();
       $scope.username = LoginFactory.getUser().Username;
 
     }
@@ -63,6 +66,15 @@ angular.module('yoSchoolApp')
         // console.log(data);
         $scope.course = data.data;
       });
+
+    };
+
+    $scope.changeLang = function(lang) {
+      console.log(lang);
+      LangFactory.setLang(lang);
+      console.log($location.path());
+      $route.reload();
+
 
     };
 

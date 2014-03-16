@@ -14,7 +14,7 @@ angular.module('yoSchoolApp')
     $scope.getAllTemplates = function() {
       console.log('get it');
       TeacherFactory.getEvalTemplates().then(function(d) {
-        console.log(d);
+        // console.log(d);
         $scope.templates = d.data;
       });
     };
@@ -30,6 +30,7 @@ angular.module('yoSchoolApp')
       var promise = TeacherFactory.getAllEval();
 
       promise.then(function(data) {
+        console.log(data);
         $scope.evaluations = data.data;
       });
     };

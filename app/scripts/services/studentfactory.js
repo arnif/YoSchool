@@ -49,6 +49,15 @@ angular.module('yoSchoolApp')
       },
       getCourseName: function() {
         return coursename;
+      },
+      sendAnswers: function(courseID, semester, evalID, answers) {
+        console.log(answers);
+        var promise = $http.post(API + '/courses/' + courseID + '/' + semester + '/evaluations/' + evalID, answers).then(function(response) {
+          return response;
+        }, function(error) {
+          return error;
+        });
+        return promise;
       }
     };
   });

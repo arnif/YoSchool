@@ -46,10 +46,20 @@ angular.module('yoSchoolApp')
         return promise;
       },
       publishTemplate: function(template) {
-        console.log(template);
+        // console.log(template);
         var promise = $http.post(API + '/evaluations', template).then(function(response){
           return response;
         }, function(error){
+          return error;
+        });
+        return promise;
+      },
+      resultEval: function(id) {
+        var promise = $http.get(API + '/evaluations/' + id).then(function(response) {
+          // console.log(response);
+          return response;
+        }, function(error) {
+          // console.log(error);
           return error;
         });
         return promise;

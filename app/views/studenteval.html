@@ -1,18 +1,27 @@
 <span ng-init="evaluation()"></span>
+<span ng-init="theCourse()"></span>
 
 
 
-<h3>{{evalu.TitleIS}}
+<h3>
+  <span ng-if="lan == 'is'">{{evalu.TitleIS}}</span>
+  <span ng-if="lan == 'en'">{{evalu.TitleEN}}</span>
 <span class="text-muted"><small>{{courseID}}</small></span>
 </h3>
 
 
-<h5>{{evalu.IntoTextIS}}<h5>
+<h5>
+  <span ng-if="lan == 'is'">{{evalu.IntoTextIS}}</span>
+  <span ng-if="lan == 'en'">{{evalu.IntroTextEN}}</span>
+    <h5>
 
-<form ng-submit="send()">
+<form>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Spurningar um áfangan</h3>
+    <h3 class="panel-title">
+      <span ng-if="lan == 'is'">Spurningar um áfangan</span>
+      <span ng-if="lan == 'en'">Course questions</span>
+    </h3>
   </div>
   <div class="panel-body">
 
@@ -20,17 +29,20 @@
 
 
       <div class="form-group" ng-if="q.Type == 'text'">
-      <label>{{ q.TextIS }}</label>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
       <textarea class="form-control" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
       </div>
 
       <div class="form-group" ng-if="q.Type == 'single'">
 
-      <label>{{ q.TextIS }}</label>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
 
-              <input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+              <span ng-if="lan =='is'"><input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="radio" name="{{q.ID}}" value="{{answer.TextEN}}">{{answer.TextEN}}</span>
 
           </div>
 
@@ -38,11 +50,13 @@
 
       <div class="form-group" ng-if="q.Type == 'multiple'">
 
-      <label>{{ q.TextIS }}</label>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
 
-              <input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextEN}}">{{answer.TextEN}}</span>
 
           </div>
       </div>
@@ -50,13 +64,16 @@
       </div>
 
   </div>
-</div>
+</div> <!-- afanga spurningar bunar -->
 
 
 
-<div class="panel panel-success">
+<div class="panel panel-success" ng-repeat="t in teachers">
   <div class="panel-heading">
-    <h3 class="panel-title">Spurningar um kennara</h3>
+    <h3 class="panel-title">
+      <span ng-if="lan =='is'">Spurningar um kennara - <small>{{t.FullName}}</small></span>
+      <span ng-if="lan =='en'">Teacher questions - <small>{{t.FullName}}</small></span>
+    </h3>
   </div>
   <div class="panel-body">
 
@@ -64,17 +81,20 @@
 
 
       <div class="form-group" ng-if="q.Type == 'text'">
-      <label>{{ q.TextIS }}</label>
-      <textarea class="form-control" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
+      <textarea class="form-control {{t.SSN}}" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
       </div>
 
       <div class="form-group" ng-if="q.Type == 'single'">
 
-      <label>{{ q.TextIS }}</label>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
 
-              <input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+              <span ng-if="lan =='is'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.TextIS}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.TextEN}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
 
           </div>
 
@@ -82,11 +102,13 @@
 
       <div class="form-group" ng-if="q.Type == 'multiple'">
 
-      <label>{{ q.TextIS }}</label>
+      <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
+      <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
 
-              <input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}
+              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextEN}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
 
           </div>
 
@@ -96,7 +118,11 @@
 
   </div>
 </div>
-<input type="submit" class="btn btn-danger" id="submit" value="Senda">
+<!-- <input type="submit" class="btn btn-danger" id="submit" value="Senda"> -->
+<button class="btn btn-danger" ng-click="send()">
+<span ng-if="lan =='is'">Senda</span>
+<span ng-if="lan =='en'">Send</span>
+</button>
 
 </form>
 
