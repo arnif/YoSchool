@@ -5,13 +5,8 @@ angular.module('yoSchoolApp')
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
-
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      },
       getEvalTemplates: function() {
         var promise = $http.get(API + '/evaluationtemplates').then(function(response) {
           // console.log(response);

@@ -2,4 +2,123 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 8, ../../sass/screen.scss */
+/* Space out content a bit */
+/* line 10, ../../sass/screen.scss */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+/* line 18, ../../sass/screen.scss */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+/* line 24, ../../sass/screen.scss */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+/* line 28, ../../sass/screen.scss */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+/* line 36, ../../sass/screen.scss */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  /* line 44, ../../sass/screen.scss */
+  .container {
+    max-width: 730px;
+  }
+}
+/* line 48, ../../sass/screen.scss */
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+/* line 53, ../../sass/screen.scss */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* line 57, ../../sass/screen.scss */
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+/* line 63, ../../sass/screen.scss */
+.marketing {
+  margin: 40px 0;
+}
+
+/* line 66, ../../sass/screen.scss */
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  /* line 75, ../../sass/screen.scss */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  /* line 80, ../../sass/screen.scss */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /* line 84, ../../sass/screen.scss */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+/* line 89, ../../sass/screen.scss */
+.loginFail {
+  display: none;
+}
+
+/* line 93, ../../sass/screen.scss */
+.nav-courses {
+  background-color: white;
+}
+
+/* line 97, ../../sass/screen.scss */
+.hr-logo {
+  margin-top: 5px;
+  width: 40px;
+}
+
+/* line 103, ../../sass/screen.scss */
+#imageClip {
+  width: 100px;
+  height: auto;
+  overflow: hidden;
+}
