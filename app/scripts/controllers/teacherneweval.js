@@ -2,7 +2,7 @@
 
 //empty eval form
 angular.module('yoSchoolApp')
-  .controller('TeachernewevalCtrl', function ($scope, LoginFactory, $location, TeacherFactory, StudentFactory, $routeParams) {
+  .controller('TeachernewevalCtrl', function ($scope, LoginFactory, $location, TeacherFactory, $routeParams) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

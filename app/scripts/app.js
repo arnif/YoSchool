@@ -2,7 +2,7 @@
 
 angular.module('yoSchoolApp', [
   'ngRoute'
-], ['angles'])
+])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

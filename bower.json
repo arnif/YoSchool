@@ -11,7 +11,7 @@
     "angular-cookies": "1.2.6",
     "angular-sanitize": "1.2.6",
     "angular-route": "1.2.6",
-    "angles": "~1.2.0"
+    "angles": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

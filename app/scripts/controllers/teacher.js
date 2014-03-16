@@ -2,7 +2,7 @@
 
 //show list of eval and status
 angular.module('yoSchoolApp')
-  .controller('TeacherCtrl', function ($scope, LoginFactory, TeacherFactory) {
+ .controller('TeacherCtrl', function ($scope, LoginFactory, TeacherFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

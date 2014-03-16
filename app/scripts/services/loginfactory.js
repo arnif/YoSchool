@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-  .factory('LoginFactory', function ($http, $q, API) {
+  .factory('LoginFactory', function ($http, API) {
     // Service logic
     // ...
     var userName = 'TestSubject';

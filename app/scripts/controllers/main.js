@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-.controller('MainCtrl', function ($scope, $location, $http, LoginFactory, StudentFactory) {
+  .controller('MainCtrl', function ($scope, $location, $http, LoginFactory) {
 
   // $scope.userName = LoginFactory.getUsername();
 
@@ -11,7 +11,7 @@ angular.module('yoSchoolApp')
     'Karma'
   ];
 
-  $scope.person = {'user': 'admin', 'pass': 'asdgasdgas'};
+  $scope.person = {'user': 'sindris12', 'pass': 'asdgasdgas'};
 
   $scope.loginForm = function(isValid) {
 

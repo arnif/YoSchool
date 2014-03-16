@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp')
-  .factory('StudentFactory', function ($http, $q, API) {
+  .factory('StudentFactory', function ($http, API) {
     // Service logic
     // ...
 
