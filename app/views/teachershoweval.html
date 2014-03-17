@@ -24,11 +24,14 @@
         <accordion-heading>
             <span ng-click="showResult(cq)">{{cq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
         </accordion-heading>
-        <ul ng-if="cq.Type == 'text'">
-          <li ng-repeat="svar in cq.TextResults track by $index">
-            {{svar}}
-          </li>
-        </ul>
+
+        <table class="table">
+              <tbody ng-if="cq.Type == 'text'">
+                <tr ng-repeat="svar in cq.TextResults track by $index">
+                  <td> {{ svar }} </td>
+                </tr>
+              </tbody>
+        </table>
 
         <span ng-if="cq.Type != 'text'">
           <canvas barchart options="options" data="chart" width="500" height="300" >
@@ -50,11 +53,14 @@
         <accordion-heading>
             <span ng-click="showResult(tq)" ng-show="teacher.SSN == tq.TeacherSSN">{{tq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
         </accordion-heading>
-        <ul ng-if="tq.Type == 'text'">
-          <li ng-repeat="svar in tq.TextResults track by $index">
-            {{svar}}
-          </li>
-        </ul>
+        
+        <table class="table">
+              <tbody ng-if="tq.Type == 'text'">
+                <tr ng-repeat="svar in tq.TextResults track by $index">
+                  <td> {{ svar }} </td>
+                </tr>
+              </tbody>
+        </table>
 
         <span ng-if="tq.Type != 'text'">
           <canvas barchart options="options" data="chart" width="500" height="300" >
@@ -65,23 +71,7 @@
   </accordion>
 
 
-
-
-   <!--  <ul>
-      <li ng-repeat="tq in tQuestions">
-        <span ng-if="tq.TeacherSSN == teacher.SSN">
-          <a href="" ng-click="showResult(tq)">{{tq.TextIS}}</a>
-        </span>
-      </li>
-    </ul> -->
-
-
   </div>
-
-
-
-
-
   </div>
 </div>
 

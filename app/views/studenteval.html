@@ -72,18 +72,18 @@
   </div>
 </div> <!-- afanga spurningar bunar -->
 
+<accordion close-others="oneAtATime">
 
+    <accordion-group is-open="isopen" ng-repeat="t in teachers">
+        <accordion-heading>
 
-<div class="panel panel-success" ng-repeat="t in teachers">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <span ng-if="lan =='is'">Spurningar um kennara - <small>{{t.FullName}}</small></span>
-      <span ng-if="lan =='en'">Teacher questions - <small>{{t.FullName}}</small></span>
-    </h3>
-  </div>
-  <div class="panel-body">
+            <span ng-if="lan =='is'">Spurningar um kennara - <small>{{t.FullName}}</small></span>
+            <span ng-if="lan =='en'">Teacher questions - <small>{{t.FullName}}</small></span>
 
-      <div ng-repeat="q in evalu.TeacherQuestions">
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+        </accordion-heading>
+
+              <div ng-repeat="q in evalu.TeacherQuestions">
 
 
       <div class="form-group" ng-if="q.Type == 'text'">
@@ -128,8 +128,13 @@
 
       </div>
 
-  </div>
-</div>
+    </accordion-group>
+
+  </accordion>
+
+
+
+
 <!-- <input type="submit" class="btn btn-danger" id="submit" value="Senda"> -->
 <button class="btn btn-danger" ng-click="send()">
 <span ng-if="lan =='is'">Senda</span>
