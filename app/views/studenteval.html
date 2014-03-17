@@ -41,8 +41,8 @@
 
           <div ng-repeat="answer in q.Answers">
 
-              <span ng-if="lan =='is'"><input type="radio" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}</span>
-              <span ng-if="lan =='en'"><input type="radio" name="{{q.ID}}" value="{{answer.TextEN}}">{{answer.TextEN}}</span>
+              <span ng-if="lan =='is'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextEN}}</span>
 
           </div>
 
@@ -55,8 +55,8 @@
 
           <div ng-repeat="answer in q.Answers">
 
-              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}">{{answer.TextIS}}</span>
-              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextEN}}">{{answer.TextEN}}</span>
+              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextEN}}</span>
 
           </div>
       </div>
@@ -93,8 +93,8 @@
 
           <div ng-repeat="answer in q.Answers">
 
-              <span ng-if="lan =='is'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.TextIS}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
-              <span ng-if="lan =='en'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.TextEN}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
+              <span ng-if="lan =='is'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
 
           </div>
 
@@ -107,8 +107,8 @@
 
           <div ng-repeat="answer in q.Answers">
 
-              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextIS}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
-              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.TextEN}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
+              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
+              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
 
           </div>
 

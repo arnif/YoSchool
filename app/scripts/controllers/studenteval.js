@@ -145,7 +145,7 @@ angular.module('yoSchoolApp')
 
       }
 
-      // console.log(answers);
+      console.log(answers);
 
 
 
