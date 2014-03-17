@@ -75,7 +75,7 @@ describe('Service: TeacherFactory', function () {
     $httpBackend.flush();
   }));
 
-  
+
     it('should post evalTemplates', inject(function (TeacherFactory, $httpBackend, API) {
     var template = {
     'ID': 1,
@@ -131,6 +131,32 @@ describe('Service: TeacherFactory', function () {
     $httpBackend.expect('POST', API + '/evaluations', template).respond(404, 'No Content');
 
     TeacherFactory.publishTemplate(template).then(function(data) {
+      expect(data.status).toBe(404);
+    });
+
+    $httpBackend.flush();
+
+  }));
+
+  it('should revice evaluation', inject(function (TeacherFactory, $httpBackend, API) {
+    var template = 12;
+
+    $httpBackend.expect('GET', API + '/evaluations/' + template).respond(200, 'Ok');
+
+    TeacherFactory.resultEval(template).then(function(data) {
+      expect(data.status).toBe(200);
+    });
+
+    $httpBackend.flush();
+
+  }));
+
+  it('should not revice evaluation', inject(function (TeacherFactory, $httpBackend, API) {
+    var template = 12;
+
+    $httpBackend.expect('GET', API + '/evaluations/' + template).respond(404, 'No Content');
+
+    TeacherFactory.resultEval(template).then(function(data) {
       expect(data.status).toBe(404);
     });
 
