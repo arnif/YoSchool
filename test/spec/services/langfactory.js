@@ -15,4 +15,10 @@ describe('Service: LangFactory', function () {
     expect(!!LangFactory).toBe(true);
   });
 
+  it('should set lang and get', function() {
+    var lang = 'en';
+    LangFactory.setLang(lang);
+    expect(LangFactory.getLang()).toBe(lang);
+  });
 });
+
