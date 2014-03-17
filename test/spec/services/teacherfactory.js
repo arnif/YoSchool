@@ -107,7 +107,7 @@ describe('Service: TeacherFactory', function () {
 
   }));
 
-      it('should publish Templates', inject(function (TeacherFactory, $httpBackend, API) {
+  it('should publish Templates', inject(function (TeacherFactory, $httpBackend, API) {
     var template = {
     'ID': 1,
     'TitleIS': 'sample string 2',

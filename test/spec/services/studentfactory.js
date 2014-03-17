@@ -109,4 +109,38 @@ describe('Service: StudentFactory', function () {
     StudentFactory.setCourseName(name);
     expect(StudentFactory.getCourseName()).toBe('T-999-VINE');
   });
+
+  it('should send answer', inject(function(StudentFactory, $httpBackend, API) {
+    var answers = {'QuestionID': 1,
+    'TeacherSSN': 'sample string 2',
+    'Value': 'sample string 3' };
+
+    var courseID = 1;
+    var semester = 20141;
+    var evalID = 5;
+
+    $httpBackend.expect('POST', API + '/courses/' + courseID + '/' + semester + '/evaluations/' + evalID, answers).respond(200, 'OK');
+    StudentFactory.sendAnswers(courseID, semester, evalID, answers).then(function(data) {
+      expect(data.status).toBe(200);
+    });
+
+    $httpBackend.flush();
+  }));
+
+  it('should not send answer', inject(function(StudentFactory, $httpBackend, API) {
+    var answers = {'QuestionID': 1,
+    'TeacherSSN': 'sample',
+    'Value': 'sample1' };
+
+    var courseID = 1;
+    var semester = 20141;
+    var evalID = 5;
+
+    $httpBackend.expect('POST', API + '/courses/' + courseID + '/' + semester + '/evaluations/' + evalID, answers).respond(404, 'Error');
+    StudentFactory.sendAnswers(courseID, semester, evalID, answers).then(function(data) {
+      expect(data.status).toBe(404);
+    });
+    
+    $httpBackend.flush();
+  }));
 });
