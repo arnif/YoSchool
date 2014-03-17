@@ -74,6 +74,7 @@ angular.module('yoSchoolApp')
       LangFactory.setLang(lang);
       console.log($location.path());
       // $route.reload();
+      $location.path($location.path() + '/');
 
 
     };

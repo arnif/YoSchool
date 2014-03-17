@@ -2,7 +2,7 @@
 
 //show Eval to be answerd
 angular.module('yoSchoolApp')
-.controller('StudentevalCtrl', function ($scope, $routeParams, StudentFactory, LoginFactory, LangFactory) {
+.controller('StudentevalCtrl', function ($scope, $routeParams, $location, StudentFactory, LoginFactory, LangFactory) {
   $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -60,20 +60,31 @@ angular.module('yoSchoolApp')
 
        } else if (v.Type === 'single') {
         //virkar fyrir radio
-        csvar = document.querySelector('input[name="' + v.ID + '"]:checked').value;
 
-        obj = {};
-        obj.QuestionID = v.ID;
-        obj.TeacherSSN = '';
-        obj.Value = csvar;
+        if (document.querySelector('input[name="' + v.ID + '"]').checked) {
 
-        answers.push(obj);
+          csvar = document.querySelector('input[name="' + v.ID + '"]:checked').value;
+
+          obj = {};
+          obj.QuestionID = v.ID;
+          obj.TeacherSSN = '';
+          obj.Value = csvar;
+
+          answers.push(obj);
+
+        } else {
+
+          csvar = null;
+        }
+
+
 
        } else if(v.Type === 'multiple') {
         //checkbox
         var checkboxes = document.getElementsByName(v.ID);
 
         for (var i=0, n=checkboxes.length;i<n;i++) {
+
           if (checkboxes[i].checked) {
 
             csvar = checkboxes[i].value;
@@ -84,7 +95,12 @@ angular.module('yoSchoolApp')
 
             answers.push(obj);
 
+          } else {
+
+            csvar = null;
           }
+
+
         }
 
        }
@@ -110,7 +126,7 @@ angular.module('yoSchoolApp')
           obj = {};
           obj.QuestionID = parseInt(ssnElements[i].name);
           obj.TeacherSSN = ssn;
-          obj.Value = ssnElements[i].value;
+          obj.Value = ssnElements[i].value || null;
 
           answers.push(obj);
 
@@ -122,7 +138,7 @@ angular.module('yoSchoolApp')
             obj = {};
             obj.QuestionID = parseInt(ssnElements[i].placeholder); //lolhax
             obj.TeacherSSN = ssn;
-            obj.Value = ssnElements[i].value;
+            obj.Value = ssnElements[i].value || null;
 
             answers.push(obj);
           }
@@ -136,7 +152,7 @@ angular.module('yoSchoolApp')
             obj = {};
             obj.QuestionID = parseInt(ssnElements[i].name);
             obj.TeacherSSN = ssn;
-            obj.Value = ssnElements[i].value;
+            obj.Value = ssnElements[i].value || null;
 
             answers.push(obj);
           }
@@ -156,6 +172,9 @@ angular.module('yoSchoolApp')
 
       promise.then(function(data) {
         console.log(data);
+        if (data.status === 204) {
+          $location.path('/student');
+        }
       });
 
     // console.log('send');

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('yoSchoolApp', [
-  'ngRoute', 'angles'
+  'ngRoute', 'angles', 'ui.bootstrap'
 ])
   .config(function ($routeProvider) {
     $routeProvider
