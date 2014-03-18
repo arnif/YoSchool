@@ -2,7 +2,7 @@
 
 //show eval statistics
 angular.module('yoSchoolApp')
-  .controller('TeachershowevalCtrl', function ($scope, $http, $routeParams, TeacherFactory, StudentFactory) {
+  .controller('TeachershowevalCtrl', function ($scope, $http, $routeParams, TeacherFactory, StudentFactory, LangFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -16,6 +16,8 @@ angular.module('yoSchoolApp')
     var id = $routeParams.evaluationID;
 
     $scope.stuff = '';
+
+    $scope.lan = LangFactory.getLang();
 
     $scope.getDoneEvalByID = function() {
       var promise = TeacherFactory.resultEval(id);
