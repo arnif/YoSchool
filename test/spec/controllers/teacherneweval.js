@@ -124,6 +124,89 @@ describe('Controller: TeachernewevalCtrl', function () {
 
   }));
 
+  it('should not add answer', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    var question = {Answers: ['yes','no','3','4','5','6']};
+    scope.addAnswer(question);
+    scope.$apply();
+    expect(scope.toMany).not.toBe(undefined);
+
+  }));
+
+  it('should remove course question', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    var question = {Answers: ['yes','no','3','4','5','6']};
+    scope.evaluation.CourseQuestions = ['sp1', 'sp2'];
+    scope.removeCQuest(1);
+    scope.$apply();
+    expect(scope.evaluation.CourseQuestions.length).toBe(1);
+
+  }));
+
+  it('should remove course answer', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    // var question = {Answers: ['yes','no','3','4','5','6']};
+    scope.evaluation.CourseQuestions = [{First: {Answers: ['1','2']}}];
+    scope.evaluation.CourseQuestions[0].Answers = [1,2];
+    scope.removeCAnswer(0, 0);
+    scope.$apply();
+    expect(scope.evaluation.CourseQuestions[0].Answers.length).toBe(1);
+
+  }));
+
+
+  it('should remove teacher question', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    var question = {Answers: ['yes','no','3','4','5','6']};
+    scope.evaluation.TeacherQuestions = ['sp1', 'sp2'];
+    scope.removeTQuest(1);
+    scope.$apply();
+    expect(scope.evaluation.TeacherQuestions.length).toBe(1);
+
+  }));
+
+
+  it('should remove teacher answer', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    // var question = {Answers: ['yes','no','3','4','5','6']};
+    scope.evaluation.TeacherQuestions = [{First: {Answers: ['1','2']}}];
+    scope.evaluation.TeacherQuestions[0].Answers = [1,2];
+    scope.removeTAnswer(0, 0);
+    scope.$apply();
+    expect(scope.evaluation.TeacherQuestions[0].Answers.length).toBe(1);
+
+  }));
+
   it('should add course question', inject(function($controller) {
 
     routeParams.evaluationID = undefined;
