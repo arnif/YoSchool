@@ -1,19 +1,113 @@
-<form role="form">
+<form name="template_form" role="form" novalidate ng-submit="postTemplate(template_form.$valid)">
   <div class="form-group">
     <label for="titleIS">Titill</label>
-    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old">
+    <input type="text" 
+           class="form-control" 
+           id="titleIS" 
+           placeholder="Ttill" 
+           ng-model="evaluation.TitleIS" 
+           ng-disabled="!old"
+           name="title-input"
+           ng-minlength=3
+           ng-class="{error: template_form.title-input.$dirty && template_form.title-input.$invalid}"
+           required />
+
+          <div class="error"
+             ng-show="template_form.title-input.$dirty && template_form.title-input.$invalid">
+          <small class="error"
+                 ng-show="template_form.title-input.$error.required">
+                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn titil á sniðmátinu</span>
+                 <span ng-if="lan == 'en'">Please type in a title</span>
+          </small>
+          <small class="error"
+                 ng-show="template_form.title-input.$error.minlength">
+                 <span ng-if="lan == 'is'">Titill hefur ekki náð lámarks lengd</span>
+                 <span ng-if="lan == 'en'">Titill does not have the minium length</span>
+          </small>
+        </div>
   </div>
    <div class="form-group">
     <label for="titleEN">Title</label>
-    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN" ng-disabled="!old">
+    <input type="text" 
+           class="form-control" 
+           id="titleEN" 
+           placeholder="Title" 
+           ng-model="evaluation.TitleEN" 
+           ng-disabled="!old"
+           name="title-en-input"
+           ng-minlength=3
+           ng-class="{error: template_form.title-en-input.$dirty && template_form.title-en-input.$invalid}"
+           required />
+
+          <div class="error"
+             ng-show="template_form.title-en-input.$dirty && template_form.title-en-input.$invalid">
+          <small class="error"
+                 ng-show="template_form.title-en-input.$error.required">
+                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn title á sniðmátinu</span>
+                 <span ng-if="lan == 'en'">Please type in a title</span>
+          </small>
+          <small class="error"
+                 ng-show="template_form.title-en-input.$error.minlength">
+                 <span ng-if="lan == 'is'">Title hefur ekki lámarks lengd</span>
+                 <span ng-if="lan == 'en'">Title does not have the minium length</span>
+          </small>
+        </div>
   </div>
   <div class="form-group">
     <label for="Kynning">Kynning</label>
-    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS" ng-disabled="!old"> </textarea>
+    <textarea class="form-control" 
+              id="Kynning" 
+              placeholder="Kynningar texti" 
+              ng-model="evaluation.IntroTextIS" 
+              ng-disabled="!old" 
+              name="kynning-input"
+              ng-minlength=3
+              ng-class="{error: template_form.kynning-input.$dirty && template_form.kynning-input.$invalid}"
+              required> 
+    </textarea>
+
+    <div class="error"
+             ng-show="template_form.kynning-input.$dirty && template_form.kynning-input.$invalid">
+          <small class="error"
+                 ng-show="template_form.kynning-input.$error.required">
+                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn kynningu á sniðmátinu</span>
+                 <span ng-if="lan == 'en'">Please type in a kynningu</span>
+          </small>
+          <small class="error"
+                 ng-show="template_form.kynning-input.$error.minlength">
+                 <span ng-if="lan == 'is'">Kynning hefur ekki lámarks lengd</span>
+                 <span ng-if="lan == 'en'">Kynning does not have the minium length</span>
+          </small>
+        </div>
+
   </div>
    <div class="form-group">
     <label for="Intro">Intro</label>
-    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old"></textarea>
+    <textarea class="form-control" 
+              id="Intro" 
+              placeholder="Intro text" 
+              ng-model="evaluation.IntroTextEN" 
+              ng-disabled="!old" 
+              name="intro-input"
+              ng-minlength=3
+              ng-class="{error: template_form.intro-input.$dirty && template_form.intro-input.$invalid}"
+              required>
+    </textarea>
+
+    <div class="error"
+             ng-show="template_form.intro-input.$dirty && template_form.intro-input.$invalid">
+          <small class="error"
+                 ng-show="template_form.intro-input.$error.required">
+                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn Intro á sniðmátinu</span>
+                 <span ng-if="lan == 'en'">Please type in a Intro</span>
+          </small>
+          <small class="error"
+                 ng-show="template_form.intro-input.$error.minlength">
+                 <span ng-if="lan == 'is'">Intro hefur ekki lámarks lengd</span>
+                 <span ng-if="lan == 'en'">Intro does not have the minium length</span>
+          </small>
+        </div>
+
   </div>
 
 
@@ -126,11 +220,10 @@
 </span>
 
 <span ng-show="old">
-  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'is'">Vista</button>
-  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'en'">Save</button>
-
-
+  <button class="btn btn-default" type="submit" ng-if="lan == 'is'">Vista</button>
+  <button class="btn btn-default" type="submit" ng-if="lan == 'en'">Save</button>
 </span>
+
 <span ng-show="!old">
   <button class="btn btn-danger" ng-click="publishTemplate(ID)">Publish</button></span>
 </form>

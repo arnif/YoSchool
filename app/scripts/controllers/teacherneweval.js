@@ -99,15 +99,21 @@ angular.module('yoSchoolApp')
 
 
 
-    $scope.postTemplate = function(publish) {
-      var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
+    $scope.postTemplate = function(isValid) {
 
-      pormise.then(function(data){
-        console.log(data);
+      if(isValid) {
+        var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
 
-        $location.path('/teacher');
+          pormise.then(function(data){
+          console.log(data);
+
+          $location.path('/teacher');
 
       });
+      }
+      else {
+        console.log('not valid');
+      }
     };
 
     $scope.publishTemplate = function(id) {
