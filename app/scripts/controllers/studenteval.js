@@ -44,68 +44,61 @@ angular.module('yoSchoolApp')
     // console.log(answers);
 
 
-    angular.forEach($scope.evalu.CourseQuestions, function(v){
+
       // console.log('vvvv');
        // console.log(v);
        var csvar;
 
-       if(v.Type === 'text') {
-        csvar = document.getElementsByName(v.ID)[0].value;
+       var cqElements = document.getElementsByClassName('cq-question');
+       // console.log(cqElements);
 
-        obj = {};
-        obj.QuestionID = v.ID;
-        obj.TeacherSSN = '';
-        obj.Value = csvar;
+       for(var i = 0; i < cqElements.length; i++) {
+        console.log(cqElements[i]);
 
-        answers.push(obj);
+        if (cqElements[i].type === 'textarea') {
 
-       } else if (v.Type === 'single') {
-        //virkar fyrir radio
-
-        if (document.querySelector('input[name="' + v.ID + '"]').checked) {
-
-          csvar = document.querySelector('input[name="' + v.ID + '"]:checked').value;
+          csvar = cqElements[i].value;
 
           obj = {};
-          obj.QuestionID = v.ID;
+          obj.QuestionID = cqElements[i].name;
           obj.TeacherSSN = '';
           obj.Value = csvar;
 
           answers.push(obj);
 
-        } else {
-
-          csvar = null;
-        }
+        } else if(cqElements[i].type === 'radio') {
 
 
-
-       } else if(v.Type === 'multiple') {
-        //checkbox
-        var checkboxes = document.getElementsByName(v.ID);
-
-        for (var i=0, n=checkboxes.length;i<n;i++) {
-
-          if (checkboxes[i].checked) {
-
-            csvar = checkboxes[i].value;
+          if (cqElements[i].checked) {
+            // console.log(ssnElements[i]);
             obj = {};
-            obj.QuestionID = v.ID;
+            obj.QuestionID = parseInt(cqElements[i].name);
             obj.TeacherSSN = '';
-            obj.Value = csvar;
+            obj.Value = cqElements[i].value;
 
             answers.push(obj);
+          }
 
-          } else {
+        } else if (cqElements[i].type === 'checkbox') {
 
-            csvar = null;
+          console.log('radio');
+          console.log(cqElements[i]);
+
+          if (cqElements[i].checked) {
+
+            obj = {};
+            obj.QuestionID = parseInt(cqElements[i].name);
+            obj.TeacherSSN = '';
+            obj.Value = cqElements[i].value;
+
+            answers.push(obj);
           }
 
 
         }
 
+
        }
-     });
 
 
     angular.forEach($scope.teachers, function(teacher) {
@@ -159,10 +152,12 @@ angular.module('yoSchoolApp')
 
       }
 
-      console.log(answers);
+
 
 
     }); //teacher foreach endar
+
+    console.log(answers);
 
      var promise = StudentFactory.sendAnswers($scope.courseID, $scope.semester, $scope.evaluationID, answers);
 

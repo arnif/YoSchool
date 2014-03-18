@@ -31,7 +31,7 @@
       <div class="form-group" ng-if="q.Type == 'text'">
       <label ng-if="lan == 'is'">{{ q.TextIS }}</label>
       <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
-      <textarea class="form-control" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
+      <textarea class="form-control cq-question" ng-model="answer.Answer" name="{{q.ID}}"></textarea>
       </div>
 
       <div class="form-group" ng-if="q.Type == 'single'">
@@ -40,11 +40,13 @@
       <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
-              <label ng-for="{{answer.ID.$studenteval+1}}">
-              <span ng-if="lan =='is'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextIS}}</span>
+              <label ng-for="{{answer.ID}}">
+              <span ng-if="lan =='is'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}" class="cq-question">{{answer.TextIS}}</span>
               </label>
-              <label ng-for="{{answer.ID.$studenteval+1}}">
-              <span ng-if="lan =='en'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextEN}}</span>
+
+
+              <label ng-for="{{answer.ID}}">
+              <span ng-if="lan =='en'"><input type="radio" name="{{q.ID}}" value="{{answer.ID}}" class="cq-question">{{answer.TextEN}}</span>
               </label>
 
           </div>
@@ -57,11 +59,11 @@
       <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
-              <label ng-for="{{answer.ID.$studenteval+1}}">
-              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextIS}}</span>
+              <label ng-for="{{answer.ID}}">
+              <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="cq-question">{{answer.TextIS}}</span>
               </label>
-              <label ng-for="{{answer.ID.$studenteval+1}}">
-              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}">{{answer.TextEN}}</span>
+              <label ng-for="{{answer.ID}}">
+              <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="cq-question">{{answer.TextEN}}</span>
               </label>
 
           </div>
@@ -97,10 +99,10 @@
       <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
-              <label ng-for="{{answer.ID.$studenteval+1}}">
+              <label ng-for="{{answer.ID}}">
               <span ng-if="lan =='is'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
               </label>
-              <label ng-for="{{answer.ID.$studenteval+1}}">
+              <label ng-for="{{answer.ID}}">
               <span ng-if="lan =='en'"><input type="radio" name="{{t.SSN}}" placeholder="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
               </label>
 
@@ -114,10 +116,10 @@
       <label ng-if="lan == 'en'">{{ q.TextEN }}</label>
 
           <div ng-repeat="answer in q.Answers">
-              <label ng-for="{{answer.ID.$studenteval+1}}">
+              <label ng-for="{{answer.ID}}">
               <span ng-if="lan =='is'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextIS}}</span>
               </label>
-              <label ng-for="{{answer.ID.$studenteval+1}}">
+              <label ng-for="{{answer.ID}}">
               <span ng-if="lan =='en'"><input type="checkbox" name="{{q.ID}}" value="{{answer.ID}}" class="{{t.SSN}}">{{answer.TextEN}}</span>
               </label>
 
