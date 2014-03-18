@@ -100,10 +100,8 @@ angular.module('yoSchoolApp')
           labels : svor,
           datasets : [
           {
-            fillColor : 'rgba(151,187,205,0)',
-            strokeColor : '#e67e22',
-            pointColor : 'rgba(151,187,205,0)',
-            pointStrokeColor : '#e67e22',
+            fillColor : 'rgba(151,187,205,0.5)',
+            strokeColor : 'rgba(151,187,205,1)',
             data : nidurstada
           }
         // {
