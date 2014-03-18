@@ -2,19 +2,13 @@
 
 angular.module('yoSchoolApp')
   .controller('NavCtrl', function ($scope, StudentFactory, LoginFactory, $location, $http, LangFactory, $routeParams) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
   $scope.lan = LangFactory.getLang();
 
   $scope.username = 'User';
 
   $scope.$on('$routeChangeSuccess', function() {
-    console.log('TOKEN');
-    console.log(LoginFactory.getToken());
+
     if (LoginFactory.getToken() !== undefined){
 
       $scope.courses();
@@ -62,21 +56,21 @@ angular.module('yoSchoolApp')
     StudentFactory.setCourseName(course);
   };
 
-    $scope.courses = function() {
+  $scope.courses = function() {
       // console.log('get courses');
-      var promise = StudentFactory.getMyCourses();
+    var promise = StudentFactory.getMyCourses();
 
-      promise.then(function(data) {
+    promise.then(function(data) {
         // console.log(data);
-        $scope.course = data.data;
-      });
+      $scope.course = data.data;
+    });
 
-    };
+  };
 
     $scope.changeLang = function(lang) {
-      console.log(lang);
+      // console.log(lang);
       LangFactory.setLang(lang);
-      console.log($location.path());
+      // console.log($location.path());
       // $route.reload();
       $location.path($location.path() + '/');
 

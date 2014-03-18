@@ -3,11 +3,7 @@
 //show Eval to be answerd
 angular.module('yoSchoolApp')
 .controller('StudentevalCtrl', function ($scope, $routeParams, $location, StudentFactory, LoginFactory, LangFactory) {
-  $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
 
   $scope.lan = LangFactory.getLang();
 

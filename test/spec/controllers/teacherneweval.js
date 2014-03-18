@@ -253,10 +253,35 @@ describe('Controller: TeachernewevalCtrl', function () {
       };
 
     spyOn(teacherFactory, 'postEvalTemplate').andCallThrough();
-    scope.postTemplate();
+    scope.postTemplate(true);
     deferred.resolve(scope.evaluation);
     scope.$apply();
     expect(location.path()).toBe('/teacher');
+
+  }));
+
+  it('should not post template', inject(function($controller) {
+
+    routeParams.evaluationID = undefined;
+    TeachernewevalCtrl = $controller('TeachernewevalCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+
+    });
+    scope.evaluation = {
+        TitleIS: 'Hello',
+        TitleEN: 'Hi',
+        IntroTextIS: 'Gangi ter vel',
+        IntroTextEN: 'Good luck',
+        CourseQuestions: [],
+        TeacherQuestions: []
+      };
+
+    spyOn(teacherFactory, 'postEvalTemplate').andCallThrough();
+    scope.postTemplate(false);
+    deferred.resolve(scope.evaluation);
+    scope.$apply();
+    expect(location.path()).toBe('/');
 
   }));
 

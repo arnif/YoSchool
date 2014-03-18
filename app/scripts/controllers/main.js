@@ -5,13 +5,8 @@ angular.module('yoSchoolApp')
 
   // $scope.userName = LoginFactory.getUsername();
 
-  $scope.awesomeThings = [
-    'HTML5 Boilerplate',
-    'AngularJS',
-    'Karma'
-  ];
 
-  $scope.person = {'user': 'admin', 'pass': 'asdgasdgas'};
+  $scope.person = {'user': '', 'pass': ''};
 
   $scope.loginForm = function(isValid) {
 
@@ -28,7 +23,6 @@ angular.module('yoSchoolApp')
 
         if (d.status === 200) {
           //login success
-          // $('.loginFail').hide();
           LoginFactory.setToken(d.data.Token);
           LoginFactory.setUser(d.data.User);
           $http.defaults.headers.common.Authorization = 'Basic ' + LoginFactory.getToken();
@@ -46,7 +40,6 @@ angular.module('yoSchoolApp')
           //login fail
 
           $scope.loginFail = 'Username or password incorrect';
-          // $('.loginFail').show();
         }
 
       });

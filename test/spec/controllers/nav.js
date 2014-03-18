@@ -81,10 +81,6 @@ describe('Controller: NavCtrl', function () {
   });
 });
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
-
   it('should not get route changes', function() {
     spyOn(scope, '$on');
     spyOn(loginFactory, 'getToken').andCallThrough();

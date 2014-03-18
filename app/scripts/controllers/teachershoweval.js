@@ -3,13 +3,6 @@
 //show eval statistics
 angular.module('yoSchoolApp')
   .controller('TeachershowevalCtrl', function ($scope, $http, $routeParams, TeacherFactory, StudentFactory, LangFactory) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-    $http.defaults.headers.common.Authorization = 'Basic c2luZHJpczEyOmFzZGdhc2RnYXM=';
 
     $scope.oneAtATime = true;
 

@@ -5,16 +5,13 @@
   <span ng-if="lan == 'is'">{{courseName.NameIS}} </span>
   <span class="text-muted"><small>{{ courseName.CourseID }}</small></span>
 </h4>
- 
+
 <div class="media" ng-repeat="t in courseInfo">
 
-  <span class="pull-left">
-    <img class="media-object thumbnail" id="imageClip" ng-src="{{t.ImageURL}}" alt="Mynd af kennara">
-  </span>
-  <div class="media-body">
-    <h4 class="media-heading">{{t.FullName}}</h4>
-    {{t.Email}}
-  </div>
+
+<display-teacher teacher="t"></display-teacher>
+
+
 </div>
 
 

@@ -3,11 +3,6 @@
 //show list of eval and status
 angular.module('yoSchoolApp')
  .controller('TeacherCtrl', function ($scope, LoginFactory, TeacherFactory, LangFactory) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     $scope.lan = LangFactory.getLang();
 
@@ -21,18 +16,12 @@ angular.module('yoSchoolApp')
       });
     };
 
-    // $scope.getTemplateById = function(id) {
-    //   console.log(id);
-    //   TeacherFactory.getEvalTemplateById(id).then(function(d) {
-    //     console.log(d);
-    //   });
-    // };
 
     $scope.getAllEvals = function() {
       var promise = TeacherFactory.getAllEval();
 
       promise.then(function(data) {
-        console.log(data);
+        // console.log(data);
         $scope.evaluations = data.data;
       });
     };
