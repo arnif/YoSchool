@@ -14,7 +14,7 @@ angular.module('yoSchoolApp')
     $scope.oneAtATime = true;
 
     var id = $routeParams.evaluationID;
-    var courseID;
+    $scope.courseID = '';
 
     $scope.domText = {
       afangaTextiIS: 'Veldu áfanga til að skoða niðustöður úr',
@@ -43,7 +43,7 @@ angular.module('yoSchoolApp')
 
       $scope.active = 'active';
 
-      courseID = cId;
+      $scope.courseID = cId;
 
       $scope.domText = {
         afangaTextiIS: 'Áfanga spurningar',
@@ -91,10 +91,10 @@ angular.module('yoSchoolApp')
 
     $scope.isActive = function(cId) {
       //set active
-      if (cId === courseID) {
+      if (cId === $scope.courseID) {
         return 'active';
       } else {
-        return;
+        return '';
       }
 
 

@@ -167,4 +167,16 @@ describe('Controller: TeachershowevalCtrlCtrl', function () {
     expect(scope.chart).toBe(undefined);
   });
 
+  it('should set active', function() {
+    scope.courseID = 'wepo';
+    scope.isActive('wepo');
+    expect(scope.isActive('wepo')).toBe('active');
+  });
+
+  it('should not set active', function() {
+    scope.courseID = 'wepo';
+    scope.isActive('foo');
+    expect(scope.isActive('foo')).toBe(undefined);
+  });
+
 });

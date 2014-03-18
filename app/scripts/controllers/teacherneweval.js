@@ -22,8 +22,6 @@ angular.module('yoSchoolApp')
 
 
     var evaluationID = $routeParams.evaluationID;
-    console.log('ROUTE PARAMS');
-    console.log($routeParams.evaluationID);
 
     if (evaluationID !== undefined) {
       TeacherFactory.getEvalTemplateById(evaluationID).then(function(data) {
@@ -49,15 +47,19 @@ angular.module('yoSchoolApp')
 
 
     $scope.addAnswer = function(question, is, en) {
+      if (question.Answers.length > 4) {
+        console.log('to many');
+      } else {
+       var aObj = {
+          ID: question.Answers.length,
+          TextIS: '',
+          TextEN: '',
+          ImageURL: '',
+          Weight: question.Answers.length + 1
+        };
+        question.Answers.push(aObj);
+      }
       console.log(question);
-      var aObj = {
-        ID: question.Answers.length,
-        TextIS: '',
-        TextEN: '',
-        ImageURL: '',
-        Weight: question.Answers.length + 1
-      };
-      question.Answers.push(aObj);
     };
 
 
@@ -68,7 +70,7 @@ angular.module('yoSchoolApp')
 
 
     $scope.addCourseQuestion = function(what) {
-      // console.log('new course question ' + what);
+      console.log('new course question ' + what);
       // console.log($scope.evaluation);
 
       $scope.evaluation.CourseQuestions.push({
@@ -95,6 +97,34 @@ angular.module('yoSchoolApp')
         Type: what,
         Answers: []
       });
+    };
+
+    $scope.removeCQuest = function(qId) {
+      // console.log(qId);
+      // console.log($scope.evaluation.CourseQuestions);
+      for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
+        if (qId === $scope.evaluation.CourseQuestions[i].ID) {
+          console.log('REMOVE');
+          // $scope.evaluation.CourseQuestions[i] = '';
+          $scope.evaluation.CourseQuestions.splice(i, 1);
+
+        }
+      }
+      // console.log($scope.evaluation.CourseQuestions);
+    };
+
+    $scope.removeTQuest = function(qId) {
+      console.log(qId);
+      // console.log($scope.evaluation.CourseQuestions);
+      for (var i = 0; i < $scope.evaluation.TeacherQuestions.length; i++) {
+        if (qId === $scope.evaluation.TeacherQuestions[i].ID) {
+          console.log('REMOVE');
+          // $scope.evaluation.CourseQuestions[i] = '';
+          $scope.evaluation.TeacherQuestions.splice(i, 1);
+
+        }
+      }
+      console.log($scope.evaluation.TeacherQuestions);
     };
 
 

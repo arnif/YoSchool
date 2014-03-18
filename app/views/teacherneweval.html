@@ -1,113 +1,19 @@
-<form name="template_form" role="form" novalidate ng-submit="postTemplate(template_form.$valid)">
+<form role="form">
   <div class="form-group">
     <label for="titleIS">Titill</label>
-    <input type="text" 
-           class="form-control" 
-           id="titleIS" 
-           placeholder="Ttill" 
-           ng-model="evaluation.TitleIS" 
-           ng-disabled="!old"
-           name="title-input"
-           ng-minlength=3
-           ng-class="{error: template_form.title-input.$dirty && template_form.title-input.$invalid}"
-           required />
-
-          <div class="error"
-             ng-show="template_form.title-input.$dirty && template_form.title-input.$invalid">
-          <small class="error"
-                 ng-show="template_form.title-input.$error.required">
-                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn titil á sniðmátinu</span>
-                 <span ng-if="lan == 'en'">Please type in a title</span>
-          </small>
-          <small class="error"
-                 ng-show="template_form.title-input.$error.minlength">
-                 <span ng-if="lan == 'is'">Titill hefur ekki náð lámarks lengd</span>
-                 <span ng-if="lan == 'en'">Titill does not have the minium length</span>
-          </small>
-        </div>
+    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old">
   </div>
    <div class="form-group">
     <label for="titleEN">Title</label>
-    <input type="text" 
-           class="form-control" 
-           id="titleEN" 
-           placeholder="Title" 
-           ng-model="evaluation.TitleEN" 
-           ng-disabled="!old"
-           name="title-en-input"
-           ng-minlength=3
-           ng-class="{error: template_form.title-en-input.$dirty && template_form.title-en-input.$invalid}"
-           required />
-
-          <div class="error"
-             ng-show="template_form.title-en-input.$dirty && template_form.title-en-input.$invalid">
-          <small class="error"
-                 ng-show="template_form.title-en-input.$error.required">
-                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn title á sniðmátinu</span>
-                 <span ng-if="lan == 'en'">Please type in a title</span>
-          </small>
-          <small class="error"
-                 ng-show="template_form.title-en-input.$error.minlength">
-                 <span ng-if="lan == 'is'">Title hefur ekki lámarks lengd</span>
-                 <span ng-if="lan == 'en'">Title does not have the minium length</span>
-          </small>
-        </div>
+    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN" ng-disabled="!old">
   </div>
   <div class="form-group">
     <label for="Kynning">Kynning</label>
-    <textarea class="form-control" 
-              id="Kynning" 
-              placeholder="Kynningar texti" 
-              ng-model="evaluation.IntroTextIS" 
-              ng-disabled="!old" 
-              name="kynning-input"
-              ng-minlength=3
-              ng-class="{error: template_form.kynning-input.$dirty && template_form.kynning-input.$invalid}"
-              required> 
-    </textarea>
-
-    <div class="error"
-             ng-show="template_form.kynning-input.$dirty && template_form.kynning-input.$invalid">
-          <small class="error"
-                 ng-show="template_form.kynning-input.$error.required">
-                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn kynningu á sniðmátinu</span>
-                 <span ng-if="lan == 'en'">Please type in a kynningu</span>
-          </small>
-          <small class="error"
-                 ng-show="template_form.kynning-input.$error.minlength">
-                 <span ng-if="lan == 'is'">Kynning hefur ekki lámarks lengd</span>
-                 <span ng-if="lan == 'en'">Kynning does not have the minium length</span>
-          </small>
-        </div>
-
+    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS" ng-disabled="!old"> </textarea>
   </div>
    <div class="form-group">
     <label for="Intro">Intro</label>
-    <textarea class="form-control" 
-              id="Intro" 
-              placeholder="Intro text" 
-              ng-model="evaluation.IntroTextEN" 
-              ng-disabled="!old" 
-              name="intro-input"
-              ng-minlength=3
-              ng-class="{error: template_form.intro-input.$dirty && template_form.intro-input.$invalid}"
-              required>
-    </textarea>
-
-    <div class="error"
-             ng-show="template_form.intro-input.$dirty && template_form.intro-input.$invalid">
-          <small class="error"
-                 ng-show="template_form.intro-input.$error.required">
-                 <span ng-if="lan == 'is'">Vinsamlegast sláðu inn Intro á sniðmátinu</span>
-                 <span ng-if="lan == 'en'">Please type in a Intro</span>
-          </small>
-          <small class="error"
-                 ng-show="template_form.intro-input.$error.minlength">
-                 <span ng-if="lan == 'is'">Intro hefur ekki lámarks lengd</span>
-                 <span ng-if="lan == 'en'">Intro does not have the minium length</span>
-          </small>
-        </div>
-
+    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old"></textarea>
   </div>
 
 
@@ -123,24 +29,26 @@
     <label ng-if="question.Type == 'multiple'">Krossaspurning (Mörg svör)</label>
     <label ng-if="question.Type == 'single'">Krossaspurning (Eitt svar)</label>
     <label ng-if="question.Type == 'text'">Textaspurning</label>
+    <button class="btn btn-danger btn-xs" ng-click="removeCQuest(question.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
+    <button class="btn btn-danger btn-xs" ng-click="removeCQuest(question.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
     <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
     <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
-        <li ng-repeat="answer in question.Answers track by $index">
+        <li ng-repeat="answer in question.Answers track by $index" ng-if="$index < 5">
           <label>Svar {{answer.Weight}}</label>
           <div class="input-group">
           <span class="input-group-addon">IS&nbsp;</span>
-          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old">
         </div>
         <div class="input-group">
           <span class="input-group-addon">EN</span>
-          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old">
         </div>
         </li>
       </ul>
-      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button>
+      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari {{answer}}</button>
 
     </div>
 
@@ -170,20 +78,22 @@
     <label ng-if="question.Type == 'multiple'">Krossaspurning (Mörg svör)</label>
     <label ng-if="question.Type == 'single'">Krossaspurning (Eitt svar)</label>
     <label ng-if="question.Type == 'text'">Textaspurning</label>
+    <button class="btn btn-danger btn-xs" ng-click="removeTQuest(question.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
+    <button class="btn btn-danger btn-xs" ng-click="removeTQuest(question.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
     <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
     <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
-        <li ng-repeat="answer in question.Answers track by $index">
+        <li ng-repeat="answer in question.Answers track by $index" ng-if="answer.Weight < 6">
           <label>Svar {{answer.Weight}}</label>
           <div class="input-group">
           <span class="input-group-addon">IS&nbsp;</span>
-          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old">
         </div>
         <div class="input-group">
           <span class="input-group-addon">EN</span>
-          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" my-focus="focusField1" my-blur="doneEditing()">
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old">
         </div>
         </li>
       </ul>
@@ -220,12 +130,12 @@
 </span>
 
 <span ng-show="old">
-  <button class="btn btn-default" type="submit" ng-if="lan == 'is'">Vista</button>
-  <button class="btn btn-default" type="submit" ng-if="lan == 'en'">Save</button>
-</span>
+  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'is'">Vista</button>
+  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'en'">Save</button>
 
+
+</span>
 <span ng-show="!old">
   <button class="btn btn-danger" ng-click="publishTemplate(ID)">Publish</button></span>
 </form>
-
 
