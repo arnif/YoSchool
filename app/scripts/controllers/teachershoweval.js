@@ -32,7 +32,6 @@ angular.module('yoSchoolApp')
 
 
     $scope.crunchData = function(cId) {
-      console.log(cId);
 
       var courseQuestions =[];
       var teacherQuestions = [];
@@ -50,13 +49,17 @@ angular.module('yoSchoolApp')
               teacherQuestions.push($scope.courses[i].Questions[j]);
             }
           }
+        } else {
+          console.log('not found');
         }
       }
 
       $scope.cQuestions = courseQuestions;
       $scope.tQuestions = teacherQuestions;
+      // console.log('down down down');
+      // console.log($scope.tQuestions);
 
-      getTeacherNames(teacherQuestions, cId);
+      $scope.getTeacherNames(teacherQuestions, cId);
 
       // console.log(courseQuestions);
       // console.log(teacherQuestions);
@@ -64,7 +67,7 @@ angular.module('yoSchoolApp')
 
     };
 
-    function getTeacherNames(tq, cId) {
+    $scope.getTeacherNames = function(tq, cId) {
       console.log('get names');
       $scope.teacherName = [];
       var promise = StudentFactory.getCourseInfo(cId, '20141');
@@ -76,14 +79,13 @@ angular.module('yoSchoolApp')
 
         }
       });
-    }
+    };
 
     $scope.showResult = function(question) {
-      console.log('wat');
 
       if (question.Type !== 'text') {
 
-        console.log(question);
+        // console.log(question);
 
         var svor = [];
         var nidurstada = [];
@@ -115,6 +117,8 @@ angular.module('yoSchoolApp')
     };
 
 
+      } else {
+        console.log('venjuleg sp');
       }
 
     };

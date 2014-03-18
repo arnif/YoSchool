@@ -91,7 +91,80 @@ describe('Controller: TeachershowevalCtrlCtrl', function () {
   it('should get done eval by id', function() {
     var obj = {data: 'eval 1'};
     spyOn(teacherFactory, 'resultEval').andCallThrough();
+    scope.getDoneEvalByID();
+    deferred.resolve(obj);
+    scope.$apply();
+    expect(scope.stuff).toBe('eval 1');
 
+  });
+
+  it('should crunch data', function() {
+    var obj = {CourseID: 'wepo'};
+    scope.courses = obj;
+    scope.crunchData('wepo');
+    scope.$apply();
+    expect(scope.courses).toBe(obj);
+
+  });
+
+  it('should not crunch data with wrong cId', function() {
+    // var obj = {length: 1, CourseID: 'wepo', Questions: {}};
+    //scope.courses = [{CourseID: 'wepo', length: 1, Questions: {TeacherSSN: 'abc', length:1}}];
+    scope.courses = [{CourseID: 'wepo', Questions: [{TeacherSSN: null}]}];
+    // scope.courses.Questions = {TeacherSSN: null};
+    scope.crunchData('foo');
+    scope.$apply();
+    expect(scope.cQuestions).not.toBe(null);
+    expect(scope.tQuestions).not.toBe(null);
+  });
+
+
+
+  it('should crunch data with cId equal and ssn null', function() {
+    // var obj = {length: 1, CourseID: 'wepo', Questions: {}};
+    //scope.courses = [{CourseID: 'wepo', length: 1, Questions: {TeacherSSN: 'abc', length:1}}];
+    scope.courses = [{CourseID: 'wepo', Questions: [{TeacherSSN: null}]}];
+    // scope.courses.Questions = {TeacherSSN: null};
+    scope.crunchData('wepo');
+    scope.$apply();
+    expect(scope.cQuestions).not.toBe(null);
+    expect(scope.tQuestions).not.toBe(null);
+  });
+
+  it('should crunch data with cId equal and ssn NOT null', function() {
+    // var obj = {length: 1, CourseID: 'wepo', Questions: {}};
+    //scope.courses = [{CourseID: 'wepo', length: 1, Questions: {TeacherSSN: 'abc', length:1}}];
+    scope.courses = [{CourseID: 'wepo', Questions: [{TeacherSSN: 'abc'}]}];
+    // scope.courses.Questions = {TeacherSSN: null};
+    scope.crunchData('wepo');
+    scope.$apply();
+    expect(scope.tQuestions).not.toBe(null);
+    expect(scope.cQuestions).not.toBe(null);
+
+  });
+
+  it('shuld get teacher names', function() {
+
+    var obj = {data: 'wepo'};
+    spyOn(studentFactory, 'getCourseInfo').andCallThrough();
+    scope.getTeacherNames();
+    deferred.resolve(obj);
+    scope.$apply();
+    expect(scope.teacherName).not.toBe(null);
+  });
+
+  it('should show results', function() {
+    var obj = {OptionsResults: ['yes','no']};
+    scope.showResult(obj);
+    scope.$apply();
+    expect(scope.chart).not.toBe(null);
+  });
+
+  it('should show results', function() {
+    var obj = {Type: 'text' ,OptionsResults: ['yes','no']};
+    scope.showResult(obj);
+    scope.$apply();
+    expect(scope.chart).toBe(undefined);
   });
 
 });
