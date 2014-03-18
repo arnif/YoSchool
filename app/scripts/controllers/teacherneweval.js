@@ -48,8 +48,16 @@ angular.module('yoSchoolApp')
 
     $scope.addAnswer = function(question, is, en) {
       if (question.Answers.length > 4) {
-        console.log('to many');
+        // console.log('to many');
+        $scope.toMany = {
+          is: 'Hámarki náð',
+          en: 'Maximum reached'
+        };
       } else {
+        $scope.toMany = {
+          is: '',
+          en: ''
+        };
        var aObj = {
           ID: question.Answers.length,
           TextIS: '',
@@ -70,8 +78,12 @@ angular.module('yoSchoolApp')
 
 
     $scope.addCourseQuestion = function(what) {
-      console.log('new course question ' + what);
+      // console.log('new course question ' + what);
       // console.log($scope.evaluation);
+      $scope.toMany = {
+          is: '',
+          en: ''
+        };
 
       $scope.evaluation.CourseQuestions.push({
         ID: $scope.evaluation.CourseQuestions.length,
@@ -89,6 +101,11 @@ angular.module('yoSchoolApp')
 
     $scope.addTeacherQuestion = function(what) {
       // console.log('new teacher question ' + what);
+      $scope.toMany = {
+          is: '',
+          en: ''
+        };
+
       $scope.evaluation.TeacherQuestions.push({
         ID: $scope.evaluation.TeacherQuestions.length,
         TextIS: '',
@@ -102,48 +119,59 @@ angular.module('yoSchoolApp')
     $scope.removeCQuest = function(qId) {
       // console.log(qId);
       // console.log($scope.evaluation.CourseQuestions);
-      for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
-        if (qId === $scope.evaluation.CourseQuestions[i].ID) {
-          console.log('REMOVE');
-          // $scope.evaluation.CourseQuestions[i] = '';
-          $scope.evaluation.CourseQuestions.splice(i, 1);
+      $scope.evaluation.CourseQuestions.splice(qId, 1);
 
-        }
-      }
+      // for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
+      //   if (qId === $scope.evaluation.CourseQuestions[i].ID) {
+      //     console.log('REMOVE');
+      //     // $scope.evaluation.CourseQuestions[i] = '';
+      //     $scope.evaluation.CourseQuestions.splice(i, 1);
+
+      //   }
+      // }
       // console.log($scope.evaluation.CourseQuestions);
     };
 
-    $scope.removeTQuest = function(qId) {
-      console.log(qId);
-      // console.log($scope.evaluation.CourseQuestions);
-      for (var i = 0; i < $scope.evaluation.TeacherQuestions.length; i++) {
-        if (qId === $scope.evaluation.TeacherQuestions[i].ID) {
-          console.log('REMOVE');
-          // $scope.evaluation.CourseQuestions[i] = '';
-          $scope.evaluation.TeacherQuestions.splice(i, 1);
+    $scope.removeCAnswer = function(qId, answer) {
+      // console.log(answer);
+      // console.log(qId);
+      $scope.evaluation.CourseQuestions[qId].Answers.splice(answer, 1);
+    };
 
-        }
-      }
-      console.log($scope.evaluation.TeacherQuestions);
+    $scope.removeTQuest = function(qId) {
+      // console.log(qId);
+      // console.log($scope.evaluation.CourseQuestions);
+      $scope.evaluation.TeacherQuestions.splice(qId, 1);
+
+      // for (var i = 0; i < $scope.evaluation.TeacherQuestions.length; i++) {
+      //   if (qId === $scope.evaluation.TeacherQuestions[i].ID) {
+      //     console.log('REMOVE');
+      //     // $scope.evaluation.CourseQuestions[i] = '';
+      //     $scope.evaluation.TeacherQuestions.splice(i, 1);
+
+      //   }
+      // }
+      // console.log($scope.evaluation.TeacherQuestions);
+    };
+
+    $scope.removeTAnswer = function(qId, answer) {
+      // console.log(answer);
+      // console.log(qId);
+      $scope.evaluation.TeacherQuestions[qId].Answers.splice(answer, 1);
     };
 
 
 
     $scope.postTemplate = function(isValid) {
 
-      if(isValid) {
         var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
 
-          pormise.then(function(data){
-          console.log(data);
+        pormise.then(function(data){
+        console.log(data);
 
-          $location.path('/teacher');
+        $location.path('/teacher');
 
-      });
-      }
-      else {
-        console.log('not valid');
-      }
+        });
     };
 
     $scope.publishTemplate = function(id) {
@@ -167,7 +195,6 @@ angular.module('yoSchoolApp')
         } else {
           $location.path('/');
           console.log('failed');
-          return;
         }
       });
     };

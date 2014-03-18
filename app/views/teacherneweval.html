@@ -1,19 +1,19 @@
 <form role="form">
   <div class="form-group">
     <label for="titleIS">Titill</label>
-    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old">
+    <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old" required>
   </div>
    <div class="form-group">
     <label for="titleEN">Title</label>
-    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN" ng-disabled="!old">
+    <input type="text" class="form-control" id="titleEN" placeholder="Title" ng-model="evaluation.TitleEN" ng-disabled="!old" required>
   </div>
   <div class="form-group">
     <label for="Kynning">Kynning</label>
-    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS" ng-disabled="!old"> </textarea>
+    <textarea class="form-control" id="Kynning" placeholder="Kynningar texti" ng-model="evaluation.IntroTextIS" ng-disabled="!old" required> </textarea>
   </div>
    <div class="form-group">
     <label for="Intro">Intro</label>
-    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old"></textarea>
+    <textarea class="form-control" id="Intro" placeholder="Intro text" ng-model="evaluation.IntroTextEN" ng-disabled="!old" required></textarea>
   </div>
 
 
@@ -31,24 +31,26 @@
     <label ng-if="question.Type == 'text'">Textaspurning</label>
     <button class="btn btn-danger btn-xs" ng-click="removeCQuest(question.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
     <button class="btn btn-danger btn-xs" ng-click="removeCQuest(question.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
-    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
-    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
+    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old" required>
+    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old" required>
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
         <li ng-repeat="answer in question.Answers track by $index" ng-if="$index < 5">
           <label>Svar {{answer.Weight}}</label>
+              <button class="btn btn-danger btn-xs" ng-click="removeCAnswer(question.ID, answer.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
+              <button class="btn btn-danger btn-xs" ng-click="removeCAnswer(question.ID, answer.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
           <div class="input-group">
           <span class="input-group-addon">IS&nbsp;</span>
-          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old">
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" required>
         </div>
         <div class="input-group">
           <span class="input-group-addon">EN</span>
-          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old">
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" required>
         </div>
         </li>
       </ul>
-      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari {{answer}}</button>
+      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button><span>{{toMany.is}}</span>
 
     </div>
 
@@ -80,24 +82,26 @@
     <label ng-if="question.Type == 'text'">Textaspurning</label>
     <button class="btn btn-danger btn-xs" ng-click="removeTQuest(question.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
     <button class="btn btn-danger btn-xs" ng-click="removeTQuest(question.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
-    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old">
-    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old">
+    <input type="text" class="form-control" placeholder="Ttill Spurningar" ng-model="question.TextIS" ng-disabled="!old" required>
+    <input type="text" class="form-control" placeholder="Question title" ng-model="question.TextEN" ng-disabled="!old" required>
     <div ng-show="question.Type == 'multiple' || question.Type == 'single'">
       <label>Svarmoguleikar</label>
       <ul>
         <li ng-repeat="answer in question.Answers track by $index" ng-if="answer.Weight < 6">
           <label>Svar {{answer.Weight}}</label>
+          <button class="btn btn-danger btn-xs" ng-click="removeTAnswer(question.ID, answer.ID)" ng-show="old" ng-if="lan == 'is'">Eyða</button>
+              <button class="btn btn-danger btn-xs" ng-click="removeTAnswer(question.ID, answer.ID)" ng-show="old" ng-if="lan == 'en'">Delete</button>
           <div class="input-group">
           <span class="input-group-addon">IS&nbsp;</span>
-          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old">
+          <input class="form-control" ng-model="answer.TextIS" ng-disabled="!old" required>
         </div>
         <div class="input-group">
           <span class="input-group-addon">EN</span>
-          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old">
+          <input class="form-control" ng-model="answer.TextEN" ng-disabled="!old" required>
         </div>
         </li>
       </ul>
-      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button>
+      <button class="btn btn-info" ng-click="addAnswer(question)" ng-show="old">Bæta við svari</button><span>{{toMany.is}}</span>
 
     </div>
 

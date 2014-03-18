@@ -176,7 +176,7 @@ describe('Controller: TeachershowevalCtrlCtrl', function () {
   it('should not set active', function() {
     scope.courseID = 'wepo';
     scope.isActive('foo');
-    expect(scope.isActive('foo')).toBe(undefined);
+    expect(scope.isActive('foo')).toBe('');
   });
 
 });
