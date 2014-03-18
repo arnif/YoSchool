@@ -12,7 +12,7 @@ angular.module('yoSchoolApp')
     $scope.getEvals = function() {
 
       StudentFactory.getMyEval().then(function(d) {
-        // console.log(d);
+         console.log(d);
         $scope.allMyEval = d.data;
       });
     };
