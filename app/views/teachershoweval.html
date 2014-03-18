@@ -25,7 +25,7 @@
 
         <table class="table">
               <tbody ng-if="cq.Type == 'text'">
-                <tr ng-repeat="svar in cq.TextResults track by $index" ng-hide="svar==' '">
+                <tr ng-repeat="svar in cq.TextResults track by $index" ng-show="svar">
                   <td> {{ svar }} </td>
                 </tr>
               </tbody>

@@ -25,6 +25,8 @@
 
   <th ng-if="lan == 'is'">Áfangi</th>
   <th ng-if="lan == 'en'">Course</th>
+  <th ng-if="lan == 'is'">Nafn</th>
+  <th ng-if="lan == 'en'">Name</th>
   <th></th>
 
 <tr ng-repeat="evaluation in allMyEval">
@@ -33,13 +35,18 @@
   <span ng-if="lan == 'is'">{{evaluation.CourseNameIS }}</span>
   <span ng-if="lan == 'en'"> {{evaluation.CourseNameEN}} </span></a>
 </td>
-  <td>
+
+<td> 
+<span ng-if="lan == 'is'">{{ evaluation.TemplateNameIS }}</span>
+<span ng-if="lan == 'en'">{{ evaluation.TemplateNameEN }}</span>
+</td>
+
+<td>
     <span class="text-muted"><small>{{ evaluation.CourseID }}</small></span>
 </td>
 
 </tr>
 
 </table>
-
 
 

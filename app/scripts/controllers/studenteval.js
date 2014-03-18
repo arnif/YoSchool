@@ -28,7 +28,7 @@ angular.module('yoSchoolApp')
     var promise = StudentFactory.getEvalById($scope.courseID, $scope.semester, $scope.evaluationID);
 
     promise.then(function(data) {
-      // console.log(data);
+      //console.log(data);
       $scope.evalu = data.data;
     });
   };
