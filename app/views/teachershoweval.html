@@ -1,20 +1,21 @@
 <span ng-init="getDoneEvalByID()"></span>
-<h4>{{stuff.TemplateTitleIS}}</h4>
-
+<h4 ng-if="lan == 'is'">{{stuff.TemplateTitleIS}}</h4>
+<h4 ng-if="lan == 'en'">{{stuff.TemplateTitleEN}}</h4>
 
 
 
 
 <ul class="nav nav-tabs nav-justified">
   <li ng-repeat="c in courses">
-    <a href='' ng-click="crunchData(c.CourseID)">{{c.CourseNameIS}}</a>
+    <a href='' ng-click="crunchData(c.CourseID)" ng-if="lan == 'is'">{{c.CourseNameIS}}</a>
+    <a href='' ng-click="crunchData(c.CourseID)" ng-if="lan == 'en'">{{c.CourseNameEN}}</a>
   </li>
 </ul>
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <h3>Áfanga spurningar</h3>
-
+    <h3 ng-if="lan == 'is'">Áfanga spurningar</h3>
+    <h3 ng-if="lan == 'en'">Course questions</h3>
 
 
 
@@ -22,7 +23,9 @@
 
     <accordion-group is-open="isopen" ng-repeat="cq in cQuestions">
         <accordion-heading>
-            <span ng-click="showResult(cq)">{{cq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
+            <span ng-click="showResult(cq)" ng-if="lan == 'is'">{{cq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
+
+            <span ng-click="showResult(cq)" ng-if="lan == 'en'">{{cq.TextEN}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
         </accordion-heading>
 
         <table class="table">
@@ -42,7 +45,8 @@
   </accordion>
 
 
-  <h3>Kennara spurningar</h3>
+  <h3 ng-if="lan == 'is'">Kennara spurningar</h3>
+  <h3 ng-if="lan == 'en'">Teacher questions</h3>
 
   <div class="teacher" ng-repeat="teacher in teacherName">
     <h4>{{teacher.Name}}</h4>
@@ -51,7 +55,9 @@
 
     <accordion-group is-open="isopen" ng-repeat="tq in tQuestions" ng-if="tq.TeacherSSN == teacher.SSN">
         <accordion-heading>
-            <span ng-click="showResult(tq)" ng-show="teacher.SSN == tq.TeacherSSN">{{tq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
+            <span ng-click="showResult(tq)" ng-show="teacher.SSN == tq.TeacherSSN" ng-if="lan == 'is'">{{tq.TextIS}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
+
+            <span ng-click="showResult(tq)" ng-show="teacher.SSN == tq.TeacherSSN" ng-if="lan == 'en'">{{tq.TextEN}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
         </accordion-heading>
         
         <table class="table">
