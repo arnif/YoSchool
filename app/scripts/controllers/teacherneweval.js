@@ -163,15 +163,19 @@ angular.module('yoSchoolApp')
 
 
     $scope.postTemplate = function(isValid) {
+        if(isValid) {
+          var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
 
-        var pormise = TeacherFactory.postEvalTemplate($scope.evaluation);
+          pormise.then(function(data){
+          console.log(data);
 
-        pormise.then(function(data){
-        console.log(data);
-
-        $location.path('/teacher');
-
+          $location.path('/teacher');
         });
+        }
+        else {
+          console.log('notvalid');
+          return;
+        }
     };
 
     $scope.publishTemplate = function(id) {

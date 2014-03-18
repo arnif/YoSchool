@@ -1,4 +1,4 @@
-<form role="form">
+<form role="form" name="template_form">
   <div class="form-group">
     <label for="titleIS">Titill</label>
     <input type="text" class="form-control" id="titleIS" placeholder="Ttill" ng-model="evaluation.TitleIS" ng-disabled="!old" required>
@@ -134,8 +134,8 @@
 </span>
 
 <span ng-show="old">
-  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'is'">Vista</button>
-  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'en'">Save</button>
+  <button class="btn btn-default" ng-click="postTemplate(template_form.$valid)" ng-if="lan == 'is'">Vista</button>
+  <button class="btn btn-default" ng-click="postTemplate(template_form.$valid)" ng-if="lan == 'en'">Save</button>
 
 
 </span>

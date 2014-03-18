@@ -3,9 +3,9 @@
 <h4>
   <span ng-if="lan == 'en'">{{courseName.NameEN}} </span>
   <span ng-if="lan == 'is'">{{courseName.NameIS}} </span>
-  <span class="text-muted"><small>{{ courseName.CourseID }}</small></span></h4>
-
-
+  <span class="text-muted"><small>{{ courseName.CourseID }}</small></span>
+</h4>
+ 
 <div class="media" ng-repeat="t in courseInfo">
 
   <span class="pull-left">
@@ -16,3 +16,5 @@
     {{t.Email}}
   </div>
 </div>
+
+
