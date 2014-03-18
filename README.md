@@ -3,7 +3,7 @@ How To:
 
 Clone the repo
 
-npm install -g yo (developer only)
+npm install
 
 bower install
 
