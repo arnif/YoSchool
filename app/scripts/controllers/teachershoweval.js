@@ -14,6 +14,14 @@ angular.module('yoSchoolApp')
     $scope.oneAtATime = true;
 
     var id = $routeParams.evaluationID;
+    var courseID;
+
+    $scope.domText = {
+      afangaTextiIS: 'Veldu áfanga til að skoða niðustöður úr',
+      afangaTextiEN: 'Please choose course to see results from',
+      kennaraTextiIS: '',
+      kennaraTextiEN: ''
+    };
 
     $scope.stuff = '';
 
@@ -33,12 +41,23 @@ angular.module('yoSchoolApp')
 
     $scope.crunchData = function(cId) {
 
+      $scope.active = 'active';
+
+      courseID = cId;
+
+      $scope.domText = {
+        afangaTextiIS: 'Áfanga spurningar',
+        afangaTextiEN: 'Course Quesitons',
+        kennaraTextiIS: 'Kennara spurningar',
+        kennaraTextiEN: 'Teacher questions'
+    };
+
       var courseQuestions =[];
       var teacherQuestions = [];
 
       for (var i = 0; i < $scope.courses.length; i++){
         if (cId === $scope.courses[i].CourseID) {
-          console.log('found it');
+          // console.log('found it');
           for (var j = 0; j < $scope.courses[i].Questions.length; j++) {
 
             if ($scope.courses[i].Questions[j].TeacherSSN === null) {
@@ -50,7 +69,10 @@ angular.module('yoSchoolApp')
             }
           }
         } else {
-          console.log('not found');
+          // console.log('not found');
+          var drasl = 0;
+          // continue;
+
         }
       }
 
@@ -67,13 +89,24 @@ angular.module('yoSchoolApp')
 
     };
 
+    $scope.isActive = function(cId) {
+      //set active
+      if (cId === courseID) {
+        return 'active';
+      } else {
+        return;
+      }
+
+
+    };
+
     $scope.getTeacherNames = function(tq, cId) {
-      console.log('get names');
+      // console.log('get names');
       $scope.teacherName = [];
       var promise = StudentFactory.getCourseInfo(cId, '20141');
 
       promise.then(function(data) {
-        console.log(data);
+        // console.log(data);
         for (var i = 0; i < data.data.length; i++) {
           $scope.teacherName.push({Name : data.data[i].FullName, SSN: data.data[i].SSN});
 
@@ -115,7 +148,8 @@ angular.module('yoSchoolApp')
 
 
       } else {
-        return;
+        var drasl = 0;
+        // continue;
       }
 
     };

@@ -3,7 +3,7 @@
 <h4 ng-if="lan == 'en'">{{stuff.TemplateTitleEN}}</h4>
 
 <ul class="nav nav-tabs nav-justified">
-  <li ng-repeat="c in courses">
+  <li ng-repeat="c in courses" class="{{isActive(c.CourseID)}}">
     <a href='' ng-click="crunchData(c.CourseID)" ng-if="lan == 'is'">{{c.CourseNameIS}}</a>
     <a href='' ng-click="crunchData(c.CourseID)" ng-if="lan == 'en'">{{c.CourseNameEN}}</a>
   </li>
@@ -11,8 +11,8 @@
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <h3 ng-if="lan == 'is'">Áfanga spurningar</h3>
-    <h3 ng-if="lan == 'en'">Course questions</h3>
+    <h3 ng-if="lan == 'is'">{{domText.afangaTextiIS}}</h3>
+    <h3 ng-if="lan == 'en'">{{domText.afangaTextiEN}}</h3>
 
   <accordion close-others="oneAtATime">
 
@@ -25,7 +25,7 @@
 
         <table class="table">
               <tbody ng-if="cq.Type == 'text'">
-                <tr ng-repeat="svar in cq.TextResults track by $index">
+                <tr ng-repeat="svar in cq.TextResults track by $index" ng-hide="svar==' '">
                   <td> {{ svar }} </td>
                 </tr>
               </tbody>
@@ -40,8 +40,8 @@
   </accordion>
 
 
-  <h3 ng-if="lan == 'is'">Kennara spurningar</h3>
-  <h3 ng-if="lan == 'en'">Teacher questions</h3>
+  <h3 ng-if="lan == 'is'">{{domText.kennaraTextiIS}}</h3>
+  <h3 ng-if="lan == 'en'">{{domText.kennaraTextiEN}}</h3>
 
   <div class="teacher" ng-repeat="teacher in teacherName">
     <h4>{{teacher.Name}}</h4>
@@ -54,10 +54,10 @@
 
             <span ng-click="showResult(tq)" ng-show="teacher.SSN == tq.TeacherSSN" ng-if="lan == 'en'">{{tq.TextEN}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></span>
         </accordion-heading>
-        
+
         <table class="table">
               <tbody ng-if="tq.Type == 'text'">
-                <tr ng-repeat="svar in tq.TextResults track by $index">
+                <tr ng-repeat="svar in tq.TextResults track by $index" ng-show="svar">
                   <td> {{ svar }} </td>
                 </tr>
               </tbody>
