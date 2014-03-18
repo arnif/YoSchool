@@ -2,9 +2,6 @@
 <h4 ng-if="lan == 'is'">{{stuff.TemplateTitleIS}}</h4>
 <h4 ng-if="lan == 'en'">{{stuff.TemplateTitleEN}}</h4>
 
-
-
-
 <ul class="nav nav-tabs nav-justified">
   <li ng-repeat="c in courses">
     <a href='' ng-click="crunchData(c.CourseID)" ng-if="lan == 'is'">{{c.CourseNameIS}}</a>
@@ -16,8 +13,6 @@
 
     <h3 ng-if="lan == 'is'">Áfanga spurningar</h3>
     <h3 ng-if="lan == 'en'">Course questions</h3>
-
-
 
   <accordion close-others="oneAtATime">
 
@@ -37,7 +32,7 @@
         </table>
 
         <span ng-if="cq.Type != 'text'">
-          <canvas barchart options="options" data="chart" width="500" height="300" >
+          <canvas barchart options="options" data="chart" width="650" height="300" >
           </canvas>
         </span>
     </accordion-group>
@@ -69,16 +64,13 @@
         </table>
 
         <span ng-if="tq.Type != 'text'">
-          <canvas barchart options="options" data="chart" width="500" height="300" >
+          <canvas barchart options="options" data="chart" width="650" height="300" >
           </canvas>
         </span>
     </accordion-group>
 
   </accordion>
 
-
   </div>
   </div>
 </div>
-
-

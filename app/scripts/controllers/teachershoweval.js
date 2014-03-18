@@ -95,7 +95,6 @@ angular.module('yoSchoolApp')
           nidurstada.push(question.OptionsResults[i].Count);
         }
 
-
         $scope.chart = {
           labels : svor,
           datasets : [
@@ -116,7 +115,7 @@ angular.module('yoSchoolApp')
 
 
       } else {
-        console.log('venjuleg sp');
+        return;
       }
 
     };
