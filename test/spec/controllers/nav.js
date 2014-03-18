@@ -6,10 +6,12 @@ describe('Controller: NavCtrl', function () {
   beforeEach(module('yoSchoolApp'));
 
   var NavCtrl,
-    scope, loginFactory, studentFactory, rootScope, location, httpbak, q, deferred;
+    scope, loginFactory, studentFactory, langFactory, rootScope, location, httpbak, q, deferred;
 
   var username = 'sindris12';
   var courseName = 'wepo';
+  var token = 'abc';
+  var lang = 'is';
   // Initialize the controller and a mock scope
    beforeEach(function(){
     loginFactory = {
@@ -26,11 +28,11 @@ describe('Controller: NavCtrl', function () {
       setUser: function(_User) {
         username = _User;
       },
-      setToken: function() {
-        return '';
+      setToken: function(_token) {
+        token = _token;
       },
       getToken: function() {
-        return 'abc';
+        return token;
       }
     };
 
@@ -47,9 +49,19 @@ describe('Controller: NavCtrl', function () {
       }
     };
 
+    langFactory = {
+      setLang: function(_lang) {
+        lang = _lang;
+      },
+      getLang: function() {
+        return lang;
+      }
+    };
+
     module(function($provide){
       $provide.value('LoginFactory', loginFactory);
       $provide.value('StudentFactory', studentFactory);
+      $provide.value('LangFactory', langFactory);
     });
 
     inject(function ($controller, $rootScope, $location, $httpBackend, $q) {
@@ -73,11 +85,28 @@ describe('Controller: NavCtrl', function () {
     expect(scope.awesomeThings.length).toBe(3);
   });
 
-  it('should get route changes', function() {
-    spyOn(scope, '$on').andCallThrough();
+  it('should not get route changes', function() {
+    spyOn(scope, '$on');
+    spyOn(loginFactory, 'getToken').andCallThrough();
+    loginFactory.setToken(undefined);
+    scope.$broadcast('$routeChangeSuccess');
 
-    scope.$apply();
-    // expect(scope.$on).toHaveBeenCalled();
+    rootScope.$apply();
+    expect(location.path()).toBe('');
+
+
+  });
+
+  it('should route changes', function() {
+
+    spyOn(scope, '$on');
+    location.path('/student');
+    loginFactory.setToken('abc');
+    spyOn(loginFactory, 'getToken').andCallThrough();
+    scope.$broadcast('$routeChangeSuccess');
+
+    rootScope.$apply();
+    expect(location.path()).toBe('/student');
 
 
   });
@@ -142,6 +171,13 @@ describe('Controller: NavCtrl', function () {
     // expect(scope.course).toBe(obj);
 
   }));
+
+  it('should change language', function() {
+
+    spyOn(langFactory, 'setLang').andCallThrough();
+    scope.changeLang();
+    expect(location.path()).toBe('/');
+  });
 
 
 });

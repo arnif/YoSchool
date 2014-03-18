@@ -12,9 +12,9 @@ describe('Directive: myFocus', function () {
     scope = $rootScope.$new();
   }));
 
-  // it('should make hidden element visible', inject(function ($compile) {
-  //   element = angular.element('<my-focus></my-focus>');
-  //   element = $compile(element)(scope);
-  //   expect(element.text()).toBe('this is the myFocus directive');
-  // }));
+  it('should make hidden element visible', inject(function ($compile) {
+    element = angular.element('<my-focus></my-focus>');
+    element = $compile(element)(scope);
+    expect(element.text()).toBe('');
+  }));
 });

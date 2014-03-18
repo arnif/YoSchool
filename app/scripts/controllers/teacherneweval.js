@@ -22,7 +22,8 @@ angular.module('yoSchoolApp')
 
 
     var evaluationID = $routeParams.evaluationID;
-    // console.log(evaluationID);
+    console.log('ROUTE PARAMS');
+    console.log($routeParams.evaluationID);
 
     if (evaluationID !== undefined) {
       TeacherFactory.getEvalTemplateById(evaluationID).then(function(data) {
@@ -127,6 +128,10 @@ angular.module('yoSchoolApp')
         console.log(data);
         if (data.status === 204) {
           $location.path('/teacher');
+        } else {
+          $location.path('/');
+          console.log('failed');
+          return;
         }
       });
     };

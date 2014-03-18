@@ -13,13 +13,17 @@ angular.module('yoSchoolApp')
   $scope.username = 'User';
 
   $scope.$on('$routeChangeSuccess', function() {
-
+    console.log('TOKEN');
+    console.log(LoginFactory.getToken());
     if (LoginFactory.getToken() !== undefined){
 
       $scope.courses();
       $scope.lan = LangFactory.getLang();
       $scope.username = LoginFactory.getUser().Username;
 
+    } else {
+      // console.log('not logged in');
+      return;
     }
 
   });

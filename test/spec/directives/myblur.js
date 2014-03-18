@@ -12,9 +12,9 @@ describe('Directive: myBlur', function () {
     scope = $rootScope.$new();
   }));
 
-  // it('should make hidden element visible', inject(function ($compile) {
-  //   element = angular.element('<my-blur></my-blur>');
-  //   element = $compile(element)(scope);
-  //   expect(element.text()).toBe('this is the myBlur directive');
-  // }));
+  it('should make hidden element visible', inject(function ($compile) {
+    element = angular.element('<my-blur></my-blur>');
+    element = $compile(element)(scope);
+    expect(element.text()).toBe('');
+  }));
 });
