@@ -133,8 +133,7 @@ angular.module('yoSchoolApp')
     };
 
     $scope.removeCAnswer = function(qId, answer) {
-      // console.log(answer);
-      // console.log(qId);
+
       $scope.evaluation.CourseQuestions[qId].Answers.splice(answer, 1);
     };
 
