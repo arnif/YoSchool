@@ -122,3 +122,8 @@ body {
   height: auto;
   overflow: hidden;
 }
+
+/* line 109, ../../sass/screen.scss */
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 5px;
+}
