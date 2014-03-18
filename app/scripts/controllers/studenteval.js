@@ -45,6 +45,7 @@ angular.module('yoSchoolApp')
 
 
     angular.forEach($scope.evalu.CourseQuestions, function(v){
+      // console.log('vvvv');
        // console.log(v);
        var csvar;
 
@@ -108,12 +109,9 @@ angular.module('yoSchoolApp')
 
 
     angular.forEach($scope.teachers, function(teacher) {
-      var tsvarArr = [];
-      var tsvar;
+
       var ssn = teacher.SSN;
       var ssnElements = document.getElementsByClassName(ssn);
-
-      console.log(ssnElements);
 
       for (var i=0; i < ssnElements.length; i++){
         // console.log(ssnElements[i].type);
@@ -126,7 +124,7 @@ angular.module('yoSchoolApp')
           obj = {};
           obj.QuestionID = parseInt(ssnElements[i].name);
           obj.TeacherSSN = ssn;
-          obj.Value = ssnElements[i].value || null;
+          obj.Value = ssnElements[i].value;
 
           answers.push(obj);
 
@@ -138,7 +136,7 @@ angular.module('yoSchoolApp')
             obj = {};
             obj.QuestionID = parseInt(ssnElements[i].placeholder); //lolhax
             obj.TeacherSSN = ssn;
-            obj.Value = ssnElements[i].value || null;
+            obj.Value = ssnElements[i].value;
 
             answers.push(obj);
           }
@@ -152,7 +150,7 @@ angular.module('yoSchoolApp')
             obj = {};
             obj.QuestionID = parseInt(ssnElements[i].name);
             obj.TeacherSSN = ssn;
-            obj.Value = ssnElements[i].value || null;
+            obj.Value = ssnElements[i].value;
 
             answers.push(obj);
           }
@@ -164,8 +162,6 @@ angular.module('yoSchoolApp')
       console.log(answers);
 
 
-
-
     }); //teacher foreach endar
 
      var promise = StudentFactory.sendAnswers($scope.courseID, $scope.semester, $scope.evaluationID, answers);
@@ -173,6 +169,9 @@ angular.module('yoSchoolApp')
       promise.then(function(data) {
         console.log(data);
         if (data.status === 204) {
+          $location.path('/student');
+        } else {
+          console.log('failed to submit data');
           $location.path('/student');
         }
       });
