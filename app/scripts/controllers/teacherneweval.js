@@ -6,11 +6,11 @@ angular.module('yoSchoolApp')
 
     $scope.lan = LangFactory.getLang();
 
-    var role = LoginFactory.getUser();
+    // var role = LoginFactory.getUser();
 
-    if (role.Role !== 'admin') {
-      $location.path('/');
-    }
+    // if (role.Role !== 'admin') {
+    //   $location.path('/');
+    // }
 
     $scope.old = true;
 

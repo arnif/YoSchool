@@ -6,6 +6,12 @@ angular.module('yoSchoolApp')
 
     $scope.oneAtATime = true;
 
+    // var role = LoginFactory.getUser();
+
+    // if (role.Role !== 'admin') {
+    //   $location.path('/');
+    // }
+
     var id = $routeParams.evaluationID;
     $scope.courseID = '';
 

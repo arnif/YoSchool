@@ -6,7 +6,11 @@ angular.module('yoSchoolApp')
 
     $scope.lan = LangFactory.getLang();
 
-    // console.log(LoginFactory.getToken());
+    // var role = LoginFactory.getUser();
+
+    // if (role.Role !== 'admin') {
+    //   $location.path('/');
+    // }
 
     $scope.getAllTemplates = function() {
       console.log('get it');

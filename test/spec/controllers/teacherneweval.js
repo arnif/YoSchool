@@ -8,18 +8,18 @@ describe('Controller: TeachernewevalCtrl', function () {
   var TeachernewevalCtrl,
     scope, loginFactory, studentFactory, teacherFactory, rootScope, location, httpbak, q, deferred, routeParams;
 
-  var username = 'sindris12';
+  var user;
   // Initialize the controller and a mock scope
    beforeEach(function(){
     loginFactory = {
       getUser: function() {
-        return 'sindris12';
+        return {Role: 'admin'};
     },
       getAdmin: function() {
         return 'admin';
     },
       setUser: function(_User) {
-        username = _User;
+        user = _User;
       }
     };
 
@@ -87,6 +87,7 @@ describe('Controller: TeachernewevalCtrl', function () {
     rootScope.$apply();
   });
 });
+
 
 
   it('should get template by id', inject(function($controller) {
@@ -281,7 +282,7 @@ describe('Controller: TeachernewevalCtrl', function () {
     scope.postTemplate(false);
     deferred.resolve(scope.evaluation);
     scope.$apply();
-    expect(location.path()).toBe('/');
+    expect(location.path()).toBe('');
 
   }));
 

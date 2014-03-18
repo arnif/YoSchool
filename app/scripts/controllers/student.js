@@ -4,6 +4,11 @@
 angular.module('yoSchoolApp')
   .controller('StudentCtrl', function ($scope, $http, StudentFactory, LoginFactory, LangFactory) {
 
+    // var role = LoginFactory.getUser();
+
+    // if (role.Role !== 'student' || role.Role !== 'admin') {
+    //   $location.path('/');
+    // }
 
     $scope.info = LoginFactory.getUser();
 

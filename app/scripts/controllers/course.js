@@ -5,6 +5,12 @@ angular.module('yoSchoolApp')
 
     $scope.lan = LangFactory.getLang();
 
+    // var role = LoginFactory.getUser();
+
+    // if (role.Role !== 'admin' || role.Role !== 'student') {
+    //   $location.path('/');
+    // }
+
 
     var id = $routeParams.id;
     var semester = $routeParams.semester;
