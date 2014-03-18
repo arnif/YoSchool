@@ -1,15 +1,23 @@
 <span ng-init="getAllTemplates()"></span>
 <span ng-init="getAllEvals()"></span>
 
-<h4>Listi af kennslumötum</h4>
+<h4 ng-if="lan == 'is'">Listi af kennslumötum</h4>
+<h4 ng-if="lan == 'en'">List of evaluations</h4>
 <table class="table table-hover">
 
-  <th>Nafn</th>
-  <th>Staða</th>
-  <th>Lokast</th>
+  <th ng-if="lan == 'is'">Nafn</th>
+  <th ng-if="lan == 'is'">Staða</th>
+  <th ng-if="lan == 'is'">Lokast</th>
+
+  <th ng-if="lan == 'en'">Name</th>
+  <th ng-if="lan == 'en'">Status</th>
+  <th ng-if="lan == 'en'">Closes</th>
 
 <tr ng-repeat="eval in evaluations">
-  <td><a href="#/teacher/ShowEval/{{eval.ID}}">{{eval.TemplateTitleIS}}</a></td>
+  <td>
+  <a href="#/teacher/ShowEval/{{eval.ID}}" ng-if="lan == 'is'">{{eval.TemplateTitleIS}}</a>
+  <a href="#/teacher/ShowEval/{{eval.ID}}" ng-if="lan == 'en'">{{eval.TemplateTitleEN}}</a>
+  </td>
   <td>{{eval.Status}}</td>
   <td><span ng-if="eval.Status == 'open'">{{eval.EndDate  | date:'d MMM yyyy - HH:mm '}}</span></td>
 </tr>
@@ -19,15 +27,20 @@
 
 
 
-<h4>Listi af sniðmátum</h4>
+<h4 ng-if="lan == 'is'">Listi af sniðmátum</h4>
+<h4 ng-if="lan == 'en'">List of templates</h4>
+
+
 <table class="table table-hover">
 
-  <th>Nafn</th>
+  <th ng-if="lan == 'is'">Nafn</th>
+  <th ng-if="lan == 'en'">Name</th>
 
 
 <tr ng-repeat="templ in templates">
   <td>
-   <a ng-href="#/teacher/NewEval/{{templ.ID}}" ng-click="getTemplateById(templ.ID)">{{ templ.TitleIS }}</a>
+   <a ng-href="#/teacher/NewEval/{{templ.ID}}" ng-click="getTemplateById(templ.ID)" ng-if="lan == 'is'">{{ templ.TitleIS }}</a>
+   <a ng-href="#/teacher/NewEval/{{templ.ID}}" ng-click="getTemplateById(templ.ID)" ng-if="lan == 'en'">{{ templ.TitleEN }}</a>
   </td>
 
 </tr>
@@ -35,4 +48,5 @@
 </table>
 
 
-<a class="btn btn-primary" href='#/teacher/NewEval'>New Template</a>
+<a class="btn btn-primary" ng-if="lan == 'is'" href='#/teacher/NewEval'>Nýtt sniðmát</a>
+<a class="btn btn-primary" ng-if="lan == 'en'" href='#/teacher/NewEval'>New Template</a>

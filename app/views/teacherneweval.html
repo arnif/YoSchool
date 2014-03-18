@@ -21,7 +21,8 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">
-    <h3 class="panel-title">Spurningar um áfanga</h3>
+    <h3 class="panel-title" ng-if="lan == 'is'">Spurningar um áfanga</h3>
+    <h3 class="panel-title" ng-if="lan == 'en'">Course questions</h3>
   </div>
   <div class="panel-body">
   <div class="form-group" ng-repeat="question in evaluation.CourseQuestions">
@@ -67,7 +68,8 @@
 
     <div class="panel panel-success">
     <div class="panel-heading">
-    <h3 class="panel-title">Spurningar um Kennara</h3>
+    <h3 class="panel-title" ng-if="lan == 'is'">Spurningar um Kennara</h3>
+    <h3 class="panel-title" ng-if="lan == 'en'">Teacher questions</h3>
   </div>
   <div class="panel-body">
   <div class="form-group" ng-repeat="question in evaluation.TeacherQuestions">
@@ -124,8 +126,9 @@
 </span>
 
 <span ng-show="old">
-  <button class="btn btn-default" ng-click="postTemplate()">Save</button>
-<!--   <button class="btn btn-danger" ng-click="postTemplate(true)">Save and publish</button> -->
+  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'is'">Vista</button>
+  <button class="btn btn-default" ng-click="postTemplate()" ng-if="lan == 'en'">Save</button>
+
 
 </span>
 <span ng-show="!old">

@@ -2,12 +2,14 @@
 
 //show list of eval and status
 angular.module('yoSchoolApp')
- .controller('TeacherCtrl', function ($scope, LoginFactory, TeacherFactory) {
+ .controller('TeacherCtrl', function ($scope, LoginFactory, TeacherFactory, LangFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.lan = LangFactory.getLang();
 
     // console.log(LoginFactory.getToken());
 

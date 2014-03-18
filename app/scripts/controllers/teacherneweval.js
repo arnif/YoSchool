@@ -2,12 +2,14 @@
 
 //empty eval form
 angular.module('yoSchoolApp')
-  .controller('TeachernewevalCtrl', function ($scope, LoginFactory, $location, TeacherFactory, $routeParams) {
+  .controller('TeachernewevalCtrl', function ($scope, LoginFactory, $location, TeacherFactory, $routeParams, LangFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.lan = LangFactory.getLang();
 
     var role = LoginFactory.getUser();
     // console.log(role.Role);
